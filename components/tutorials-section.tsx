@@ -20,24 +20,19 @@ export function TutorialsSection() {
       <div className="flex justify-center pt-12 pb-8">
         <div className="relative">
           <Image
-            src="/images/cloud.png"
+            src="/images/cloud_beige.png"
             alt=""
             width={500}
             height={250}
             className="w-[300px] md:w-[400px] lg:w-[500px] h-auto"
           />
-          <h2 className="absolute inset-0 flex items-center justify-center text-7xl md:text-8xl lg:text-[2rem] font-tt-milks text-[#F5A623] mt-2">
-            
+          <h2 className="absolute inset-0 flex items-center justify-center text-7xl md:text-8xl lg:text-8xl font-tt-milks text-white mt-2">
+            Tutoriales
           </h2>
         </div>
       </div>
 
-      {/* JUEGOS */}
-      <div className="flex flex-col items-center mb-8 relative z-10">
-        <p className="text-[#8B8B8B] font-tt-milks text-3xl mt-1">
-          Juegos
-        </p>
-      </div>
+      
 
       {/* Tutorial Grid */}
       <div className="px-6 relative z-10">
