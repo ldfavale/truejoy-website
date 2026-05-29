@@ -96,36 +96,27 @@ export function CatalogSection() {
 
       {/* Age Categories Section */}
       <div className="px-6 py-8">
-        <div className="mx-auto max-w-6xl">
-          <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8">
-            {/* JUEGOS */}
-            <div className="flex flex-col items-center">
-              <p className="text-[#8B8B8B] font-tt-milks text-3xl mt-1">
-                Juegos
-              </p>
-            </div>
-
-            {/* Age Cards */}
-            <div className="flex flex-1 gap-4 md:gap-6 justify-center">
-              {ageCategories.map((cat) => (
-                <div
-                  key={cat.range}
-                  className={`${cat.bgColor} ${cat.textColor || "text-white"} rounded-2xl p-6 md:p-8 text-center relative cursor-pointer hover:scale-105 transition-transform min-w-[120px] md:min-w-[160px]`}
-                >
-                  <button className="absolute top-3 right-3 w-6 h-6 rounded-full bg-white/30 flex items-center justify-center">
-                    <Plus className="w-4 h-4" />
-                  </button>
-                  <p className="text-4xl md:text-5xl font-bold leading-none mt-4 font-tt-milks">{cat.range}</p>
-                  <p className="text-base mt-1 font-tt-milks">
-                    {cat.label}
-                  </p>
-                </div>
-              ))}
-            </div>
+        <div className="mx-auto max-w-5xl flex flex-col gap-6 md:gap-8">
+          {/* Age Cards */}
+          <div className="flex flex-col md:flex-row gap-4 md:gap-6 w-full">
+            {ageCategories.map((cat) => (
+              <div
+                key={cat.range}
+                className={`${cat.bgColor} ${cat.textColor || "text-white"} rounded-2xl p-6 md:p-8 text-center relative cursor-pointer hover:scale-105 transition-transform flex-1`}
+              >
+                <button className="absolute top-3 right-3 w-6 h-6 rounded-full bg-white/30 flex items-center justify-center">
+                  <Plus className="w-4 h-4" />
+                </button>
+                <p className="text-4xl md:text-5xl font-bold leading-none mt-4 font-tt-milks">{cat.range}</p>
+                <p className="text-3xl mt-1 font-tt-milks">
+                  {cat.label}
+                </p>
+              </div>
+            ))}
           </div>
 
           {/* Para toda la familia banner */}
-          <div className="mt-8 bg-[#F5A623] rounded-3xl p-8 md:p-12 relative">
+          <div className="bg-[#F5A623] rounded-3xl p-8 md:p-12 relative w-full">
             <button className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/30 flex items-center justify-center text-white">
               <Plus className="w-5 h-5" />
             </button>
