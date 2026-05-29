@@ -4,11 +4,11 @@ import { CloudBackground } from "./cloud-background"
 import Image from "next/image"
 
 const tutorials = [
-  { name: "NOMBRE" },
-  { name: "NOMBRE" },
-  { name: "NOMBRE" },
-  { name: "NOMBRE" },
-  { name: "NOMBRE" },
+  { name: "NOMBRE", image: "/images/tutorial-1.jpg", alt: "Tutorial 1" },
+  { name: "NOMBRE", image: "/images/tutorial-2.jpg", alt: "Tutorial 2" },
+  { name: "NOMBRE", image: "/images/tutorial-3.jpg", alt: "Tutorial 3" },
+  { name: "NOMBRE", image: "/images/tutorial-4.jpg", alt: "Tutorial 4" },
+  { name: "NOMBRE", image: "/images/tutorial-5.jpg", alt: "Tutorial 5" },
 ]
 
 export function TutorialsSection() {
@@ -40,8 +40,13 @@ export function TutorialsSection() {
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-6">
             {tutorials.map((tutorial, index) => (
               <div key={index} className="flex flex-col items-center">
-                <div className="w-full aspect-square bg-[#E8DCC8] rounded-xl flex items-center justify-center">
-                  <span className="text-[#D4C8B4] font-sans text-lg">FOTO</span>
+                <div className="relative w-full aspect-square bg-[#E8DCC8] rounded-xl overflow-hidden border-2 border-[#D4C8B4]">
+                  <Image
+                    src={tutorial.image}
+                    alt={tutorial.alt}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
                 <p className="text-[#AFAFAF] tracking-[0.15em] font-sans text-sm mt-3">
                   {tutorial.name}
