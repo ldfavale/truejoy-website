@@ -1,10 +1,10 @@
 "use client"
 
-import { Mail, MapPin, Phone } from "lucide-react"
+import { Mail, MapPin, Instagram } from "lucide-react"
 
 export function ContactSection() {
   return (
-    <section id="contacto" className="py-16 bg-[#4A7DE8] text-white">
+    <footer id="contacto" className="py-16 bg-[#4A7DE8] text-white">
       <div className="mx-auto max-w-6xl px-6">
         {/* Header */}
         <div className="text-center mb-12">
@@ -27,25 +27,25 @@ export function ContactSection() {
                 </div>
                 <div>
                   <p className="text-xs text-white/60 uppercase tracking-wider">Email</p>
-                  <p className="text-base text-white">hola@truejoy.com</p>
+                  <a href="mailto:truejoyproject@gmail.com" className="text-base text-white hover:underline">truejoyproject@gmail.com</a>
                 </div>
               </div>
-              <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20">
-                  <Phone className="h-5 w-5" />
+              <a href="https://www.instagram.com/truejoyproject" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 group-hover:bg-white/30 transition-colors">
+                  <Instagram className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-white/60 uppercase tracking-wider">Teléfono</p>
-                  <p className="text-base text-white">+1 (555) 123-4567</p>
+                  <p className="text-xs text-white/60 uppercase tracking-wider">Instagram</p>
+                  <p className="text-base text-white group-hover:underline">@truejoyproject</p>
                 </div>
-              </div>
+              </a>
               <div className="flex items-center gap-4">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20">
                   <MapPin className="h-5 w-5" />
                 </div>
                 <div>
                   <p className="text-xs text-white/60 uppercase tracking-wider">Ubicación</p>
-                  <p className="text-base text-white">Ciudad de Guatemala, Guatemala</p>
+                  <p className="text-base text-white">Maldonado, Uruguay</p>
                 </div>
               </div>
             </div>
@@ -106,6 +106,6 @@ export function ContactSection() {
           </div>
         </div>
       </div>
-    </section>
+    </footer>
   )
 }
