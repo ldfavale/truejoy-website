@@ -66,7 +66,7 @@ const TestimonialCarousel = () => {
 
   return (
     <div className="relative w-full max-w-6xl mx-auto text-center py-16 px-6">
-      <SectionTitle className="mb-12 shadow-sm w-full" animation="flip">
+      <SectionTitle className="mb-12 shadow-sm w-full">
         Qué dicen de nuestros juegos
       </SectionTitle>
       <ScrollReveal variant="scale" delay={0.15}>

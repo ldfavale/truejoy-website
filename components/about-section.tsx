@@ -9,9 +9,7 @@ export function AboutSection() {
   return (
     <section id="sobre-nosotros" className="py-12 bg-white">
       <div className="mx-auto max-w-6xl px-6">
-        <SectionTitle className="mb-8" animation="rotateIn">
-          Sobre nosotros
-        </SectionTitle>
+        <SectionTitle className="mb-8">Sobre nosotros</SectionTitle>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <ScrollReveal variant="slideRight" delay={0.1} className="md:col-span-2">

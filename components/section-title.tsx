@@ -1,7 +1,4 @@
-"use client"
-
 import { ReactNode } from "react"
-import { ScrollReveal, type ScrollVariant } from "./scroll-reveal"
 
 interface SectionTitleProps {
   children: ReactNode
@@ -10,8 +7,6 @@ interface SectionTitleProps {
   className?: string
   variant?: "solid" | "outline"
   borderClass?: string
-  animation?: ScrollVariant
-  animationDelay?: number
 }
 
 export function SectionTitle({
@@ -21,8 +16,6 @@ export function SectionTitle({
   className = "",
   variant = "solid",
   borderClass = "border-[#F5A623]",
-  animation = "bounce",
-  animationDelay = 0,
 }: SectionTitleProps) {
   const containerClasses =
     variant === "solid"
@@ -30,10 +23,10 @@ export function SectionTitle({
       : `bg-transparent border-4 ${borderClass} rounded-3xl p-8 md:p-12 text-center ${className}`
 
   return (
-    <ScrollReveal variant={animation} delay={animationDelay} className={containerClasses}>
+    <div className={containerClasses}>
       <h2 className={`text-4xl md:text-5xl lg:text-6xl font-tt-milks ${textClass} m-0`}>
         {children}
       </h2>
-    </ScrollReveal>
+    </div>
   )
 }

@@ -2,7 +2,7 @@
 
 import { CloudBackground } from "./cloud-background"
 import Image from "next/image"
-import { ScrollReveal, StaggerContainer, StaggerItem } from "./scroll-reveal"
+import { StaggerContainer, StaggerItem } from "./scroll-reveal"
 
 const tutorialVariants = ["flip", "scale", "fadeUp", "rotateIn", "slideRight"] as const
 
@@ -19,7 +19,7 @@ export function TutorialsSection() {
     <section id="tutoriales" className="relative bg-[#D6E8F0] overflow-hidden py-12">
       <CloudBackground />
 
-      <ScrollReveal variant="blur" duration={0.9} className="flex justify-center pt-12 pb-8 relative z-10">
+      <div className="flex justify-center pt-12 pb-8 relative z-10">
         <div className="relative">
           <Image
             src="/images/cloud_beige.png"
@@ -32,7 +32,7 @@ export function TutorialsSection() {
             Tutoriales
           </h2>
         </div>
-      </ScrollReveal>
+      </div>
 
       <div className="px-6 relative z-10">
         <div className="mx-auto max-w-5xl">
