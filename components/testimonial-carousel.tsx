@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { SectionTitle } from './section-title';
 import { Card } from './card';
+import { ScrollReveal, StaggerContainer, StaggerItem } from './scroll-reveal';
 
 const testimonialsData = [
   {
@@ -65,9 +66,10 @@ const TestimonialCarousel = () => {
 
   return (
     <div className="relative w-full max-w-6xl mx-auto text-center py-16 px-6">
-      <SectionTitle className="mb-12 shadow-sm w-full">
+      <SectionTitle className="mb-12 shadow-sm w-full" animation="flip">
         Qué dicen de nuestros juegos
       </SectionTitle>
+      <ScrollReveal variant="scale" delay={0.15}>
       <AnimatePresence mode="wait">
         <motion.div
           key={activeIndex}
@@ -86,11 +88,13 @@ const TestimonialCarousel = () => {
           </Card>
         </motion.div>
       </AnimatePresence>
+      </ScrollReveal>
       
-      <div className="flex justify-center items-center gap-4">
+      <StaggerContainer className="flex justify-center items-center gap-4 flex-wrap" stagger={0.08}>
         {reorderedTemonials.map((testimonial) => {
           const isActive = activeIndex === testimonial.originalIndex;
           return (
+            <StaggerItem key={`stagger-${testimonial.originalIndex}`} variant="pop">
             <motion.button 
               layout
               key={testimonial.originalIndex} 
@@ -118,9 +122,10 @@ const TestimonialCarousel = () => {
                 />
               </motion.div>
             </motion.button>
+            </StaggerItem>
           )}
         )}
-      </div>
+      </StaggerContainer>
     </div>
   );
 };

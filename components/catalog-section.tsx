@@ -3,6 +3,10 @@
 import Image from "next/image"
 import { Plus, Play, X } from "lucide-react"
 import { useState } from "react"
+import { ScrollReveal, StaggerContainer, StaggerItem } from "./scroll-reveal"
+
+const ageCardVariants = ["rotateIn", "bounce", "slideLeft"] as const
+const gameCardVariants = ["scale", "pop", "fadeUp", "rotateIn", "wobble"] as const
 
 const ageCategories = [
   {
@@ -78,8 +82,7 @@ export function CatalogSection() {
 
   return (
     <section id="catalogo" className="bg-[#E8DCC8]">
-      {/* Cloud Header with CATÁLOGO */}
-      <div className="flex justify-center pt-12 pb-8">
+      <ScrollReveal variant="pop" className="flex justify-center pt-12 pb-8">
         <div className="relative">
           <Image
             src="/images/cloud.png"
@@ -92,47 +95,55 @@ export function CatalogSection() {
             Catálogo
           </h2>
         </div>
-      </div>
+      </ScrollReveal>
 
       {/* Age Categories Section */}
       <div className="px-6 py-8">
         <div className="mx-auto max-w-5xl flex flex-col gap-6 md:gap-8">
-          {/* Age Cards */}
-          <div className="flex flex-col md:flex-row gap-4 md:gap-6 w-full">
-            {ageCategories.map((cat) => (
-              <div
+          <StaggerContainer className="flex flex-col md:flex-row gap-4 md:gap-6 w-full" stagger={0.15}>
+            {ageCategories.map((cat, i) => (
+              <StaggerItem
                 key={cat.range}
-                className={`${cat.bgColor} ${cat.textColor || "text-white"} rounded-2xl p-6 md:p-8 text-center relative cursor-pointer hover:scale-105 transition-transform flex-1`}
+                variant={ageCardVariants[i % ageCardVariants.length]}
+                className="flex-1"
               >
-                <button className="absolute top-3 right-3 w-6 h-6 rounded-full bg-white/30 flex items-center justify-center">
-                  <Plus className="w-4 h-4" />
-                </button>
-                <p className="text-4xl md:text-5xl font-bold leading-none mt-4 font-tt-milks">{cat.range}</p>
-                <p className="text-3xl mt-1 font-tt-milks">
-                  {cat.label}
-                </p>
-              </div>
+                <div
+                  className={`${cat.bgColor} ${cat.textColor || "text-white"} rounded-2xl p-6 md:p-8 text-center relative cursor-pointer hover:scale-105 transition-transform h-full`}
+                >
+                  <button className="absolute top-3 right-3 w-6 h-6 rounded-full bg-white/30 flex items-center justify-center">
+                    <Plus className="w-4 h-4" />
+                  </button>
+                  <p className="text-4xl md:text-5xl font-bold leading-none mt-4 font-tt-milks">{cat.range}</p>
+                  <p className="text-3xl mt-1 font-tt-milks">{cat.label}</p>
+                </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
 
-          {/* Para toda la familia banner */}
-          <div className="bg-[#F5A623] rounded-3xl p-8 md:p-12 relative w-full">
+          <ScrollReveal variant="slideLeft" delay={0.1} className="bg-[#F5A623] rounded-3xl p-8 md:p-12 relative w-full">
             <button className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/30 flex items-center justify-center text-white">
               <Plus className="w-5 h-5" />
             </button>
             <p className="text-4xl md:text-5xl lg:text-6xl text-white font-tt-milks text-center leading-none">
               para toda la familia
             </p>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
 
-      {/* Games Grid */}
       <div className="px-6 py-12">
         <div className="mx-auto max-w-5xl">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-6">
+          <StaggerContainer
+            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-6"
+            stagger={0.08}
+            delayChildren={0.05}
+          >
             {games.map((game, index) => (
-              <div key={index} className="flex flex-col items-center group">
+              <StaggerItem
+                key={index}
+                variant={gameCardVariants[index % gameCardVariants.length]}
+                className="flex flex-col items-center group"
+              >
                 <div className="relative w-full aspect-square bg-[#E8DCC8] rounded-xl overflow-hidden border-2 border-[#D4C8B4]">
                   <Image
                     src={game.image}
@@ -153,9 +164,9 @@ export function CatalogSection() {
                 <p className="text-[#8B8B8B] tracking-[0.1em] font-sans text-sm mt-3 text-center">
                   {game.name}
                 </p>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </div>
 

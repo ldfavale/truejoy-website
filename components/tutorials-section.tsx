@@ -1,7 +1,10 @@
-
+"use client"
 
 import { CloudBackground } from "./cloud-background"
 import Image from "next/image"
+import { ScrollReveal, StaggerContainer, StaggerItem } from "./scroll-reveal"
+
+const tutorialVariants = ["flip", "scale", "fadeUp", "rotateIn", "slideRight"] as const
 
 const tutorials = [
   { name: "NOMBRE", image: "/images/tutorial-1.jpg", alt: "Tutorial 1" },
@@ -16,8 +19,7 @@ export function TutorialsSection() {
     <section id="tutoriales" className="relative bg-[#D6E8F0] overflow-hidden py-12">
       <CloudBackground />
 
-      {/* Cloud Header with CATÁLOGO */}
-      <div className="flex justify-center pt-12 pb-8">
+      <ScrollReveal variant="blur" duration={0.9} className="flex justify-center pt-12 pb-8 relative z-10">
         <div className="relative">
           <Image
             src="/images/cloud_beige.png"
@@ -30,16 +32,20 @@ export function TutorialsSection() {
             Tutoriales
           </h2>
         </div>
-      </div>
+      </ScrollReveal>
 
-      
-
-      {/* Tutorial Grid */}
       <div className="px-6 relative z-10">
         <div className="mx-auto max-w-5xl">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-6">
+          <StaggerContainer
+            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-6"
+            stagger={0.1}
+          >
             {tutorials.map((tutorial, index) => (
-              <div key={index} className="flex flex-col items-center">
+              <StaggerItem
+                key={index}
+                variant={tutorialVariants[index % tutorialVariants.length]}
+                className="flex flex-col items-center"
+              >
                 <div className="relative w-full aspect-square bg-[#E8DCC8] rounded-xl overflow-hidden border-2 border-[#D4C8B4]">
                   <Image
                     src={tutorial.image}
@@ -51,14 +57,13 @@ export function TutorialsSection() {
                 <p className="text-[#AFAFAF] tracking-[0.15em] font-sans text-sm mt-3">
                   {tutorial.name}
                 </p>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </div>
 
       <div className="h-8 mt-8" />
-
     </section>
   )
 }

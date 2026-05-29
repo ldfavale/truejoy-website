@@ -1,58 +1,62 @@
 "use client"
 
 import { Mail, MapPin, Instagram } from "lucide-react"
+import { ScrollReveal, StaggerContainer, StaggerItem } from "./scroll-reveal"
 
 export function ContactSection() {
   return (
     <footer id="contacto" className="py-16 bg-[#4A7DE8] text-white">
       <div className="mx-auto max-w-6xl px-6">
-        {/* Header */}
-        <div className="text-center mb-12">
+        <ScrollReveal variant="fadeDown" className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-sans tracking-[0.2em]">
             CONTACTO
           </h2>
-        </div>
+        </ScrollReveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Info */}
-          <div>
+          <ScrollReveal variant="slideRight" delay={0.1}>
             <p className="text-lg leading-relaxed text-white/90 mb-8">
               Nos encantaría saber de ti. Si tienes preguntas sobre nuestros juegos o quieres colaborar con nosotros, no dudes en escribirnos.
             </p>
 
-            <div className="flex flex-col gap-6">
-              <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20">
-                  <Mail className="h-5 w-5" />
+            <StaggerContainer className="flex flex-col gap-6" stagger={0.14}>
+              <StaggerItem variant="fadeUp">
+                <div className="flex items-center gap-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20">
+                    <Mail className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-white/60 uppercase tracking-wider">Email</p>
+                    <a href="mailto:truejoyproject@gmail.com" className="text-base text-white hover:underline">truejoyproject@gmail.com</a>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-xs text-white/60 uppercase tracking-wider">Email</p>
-                  <a href="mailto:truejoyproject@gmail.com" className="text-base text-white hover:underline">truejoyproject@gmail.com</a>
+              </StaggerItem>
+              <StaggerItem variant="slideLeft">
+                <a href="https://www.instagram.com/truejoyproject" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 group-hover:bg-white/30 transition-colors">
+                    <Instagram className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-white/60 uppercase tracking-wider">Instagram</p>
+                    <p className="text-base text-white group-hover:underline">@truejoyproject</p>
+                  </div>
+                </a>
+              </StaggerItem>
+              <StaggerItem variant="wobble">
+                <div className="flex items-center gap-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20">
+                    <MapPin className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-white/60 uppercase tracking-wider">Ubicación</p>
+                    <p className="text-base text-white">Maldonado, Uruguay</p>
+                  </div>
                 </div>
-              </div>
-              <a href="https://www.instagram.com/truejoyproject" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 group-hover:bg-white/30 transition-colors">
-                  <Instagram className="h-5 w-5" />
-                </div>
-                <div>
-                  <p className="text-xs text-white/60 uppercase tracking-wider">Instagram</p>
-                  <p className="text-base text-white group-hover:underline">@truejoyproject</p>
-                </div>
-              </a>
-              <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20">
-                  <MapPin className="h-5 w-5" />
-                </div>
-                <div>
-                  <p className="text-xs text-white/60 uppercase tracking-wider">Ubicación</p>
-                  <p className="text-base text-white">Maldonado, Uruguay</p>
-                </div>
-              </div>
-            </div>
-          </div>
+              </StaggerItem>
+            </StaggerContainer>
+          </ScrollReveal>
 
-          {/* Contact Form */}
-          <div className="bg-white/10 rounded-3xl p-8 backdrop-blur-sm">
+          <ScrollReveal variant="slideLeft" delay={0.2} className="bg-white/10 rounded-3xl p-8 backdrop-blur-sm">
             <form className="flex flex-col gap-5" onSubmit={(e) => e.preventDefault()}>
               <div>
                 <label
@@ -103,7 +107,7 @@ export function ContactSection() {
                 Enviar mensaje
               </button>
             </form>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </footer>
