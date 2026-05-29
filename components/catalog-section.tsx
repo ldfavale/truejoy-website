@@ -3,7 +3,7 @@
 import Image from "next/image"
 import { Plus, Play, X } from "lucide-react"
 import { useState } from "react"
-import { ScrollReveal, StaggerContainer, StaggerItem } from "./scroll-reveal"
+import { StaggerContainer, StaggerItem } from "./scroll-reveal"
 
 const ageCardVariants = ["rotateIn", "bounce", "slideLeft"] as const
 const gameCardVariants = ["scale", "pop", "fadeUp", "rotateIn", "wobble"] as const
@@ -82,7 +82,7 @@ export function CatalogSection() {
 
   return (
     <section id="catalogo" className="bg-[#E8DCC8]">
-      <ScrollReveal variant="pop" className="flex justify-center pt-12 pb-8">
+      <div className="flex justify-center pt-12 pb-8">
         <div className="relative">
           <Image
             src="/images/cloud.png"
@@ -95,12 +95,12 @@ export function CatalogSection() {
             Catálogo
           </h2>
         </div>
-      </ScrollReveal>
+      </div>
 
       {/* Age Categories Section */}
       <div className="px-6 py-8">
         <div className="mx-auto max-w-5xl flex flex-col gap-6 md:gap-8">
-          <StaggerContainer className="flex flex-col md:flex-row gap-4 md:gap-6 w-full" stagger={0.15}>
+          <StaggerContainer className="flex flex-wrap flex-col md:flex-row gap-4 md:gap-6 w-full" stagger={0.15}>
             {ageCategories.map((cat, i) => (
               <StaggerItem
                 key={cat.range}
@@ -118,16 +118,17 @@ export function CatalogSection() {
                 </div>
               </StaggerItem>
             ))}
+            <StaggerItem variant="bounce" className="w-full basis-full">
+              <div className="bg-[#F5A623] text-white rounded-2xl p-6 md:p-8 text-center relative cursor-pointer hover:scale-105 transition-transform">
+                <button className="absolute top-3 right-3 w-6 h-6 rounded-full bg-white/30 flex items-center justify-center">
+                  <Plus className="w-4 h-4" />
+                </button>
+                <p className="text-3xl md:text-4xl lg:text-5xl font-tt-milks leading-none mt-4">
+                  para toda la familia
+                </p>
+              </div>
+            </StaggerItem>
           </StaggerContainer>
-
-          <ScrollReveal variant="slideLeft" delay={0.1} className="bg-[#F5A623] rounded-3xl p-8 md:p-12 relative w-full">
-            <button className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/30 flex items-center justify-center text-white">
-              <Plus className="w-5 h-5" />
-            </button>
-            <p className="text-4xl md:text-5xl lg:text-6xl text-white font-tt-milks text-center leading-none">
-              para toda la familia
-            </p>
-          </ScrollReveal>
         </div>
       </div>
 
