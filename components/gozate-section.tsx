@@ -29,10 +29,10 @@ export function GozateSection() {
 
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="text-center">
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-tt-milks text-white drop-shadow-lg leading-none">
+          <h2 className="text-7xl md:text-8xl lg:text-9xl font-tt-milks text-white drop-shadow-lg leading-none">
             Gózate en la
           </h2>
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-tt-milks text-white drop-shadow-lg leading-none mt-2">
+          <h2 className="text-7xl md:text-8xl lg:text-9xl font-tt-milks text-white drop-shadow-lg leading-none mt-2">
             Palabra de Dios
           </h2>
         </div>
