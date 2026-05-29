@@ -65,12 +65,7 @@ const TestimonialCarousel = () => {
 
   return (
     <div className="relative w-full max-w-6xl mx-auto text-center py-16 px-6">
-      <SectionTitle 
-        variant="outline" 
-        textClass="text-[#F5A623]" 
-        borderClass="border-[#F5A623]" 
-        className="mb-12 shadow-sm w-full"
-      >
+      <SectionTitle className="mb-12 shadow-sm w-full">
         Qué dicen de nuestros juegos
       </SectionTitle>
       <AnimatePresence mode="wait">
