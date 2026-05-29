@@ -19,7 +19,7 @@ export function TutorialsSection() {
     <section id="tutoriales" className="relative bg-[#D6E8F0] overflow-hidden py-12">
       <CloudBackground />
 
-      <div className="flex justify-center pt-12 pb-8 relative z-10">
+      <div className="flex justify-center pt-12 pb-16 md:pb-24 relative z-10">
         <div className="relative">
           <Image
             src="/images/cloud_beige.png"
@@ -28,7 +28,7 @@ export function TutorialsSection() {
             height={250}
             className="w-[300px] md:w-[400px] lg:w-[500px] h-auto"
           />
-          <h2 className="absolute inset-0 flex items-center justify-center text-7xl md:text-8xl lg:text-8xl font-tt-milks text-white mt-2">
+          <h2 className="absolute inset-0 flex items-center justify-center text-7xl md:text-8xl lg:text-8xl font-tt-milks text-white mt-6 md:mt-8">
             Tutoriales
           </h2>
         </div>

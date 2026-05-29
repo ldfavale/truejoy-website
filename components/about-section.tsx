@@ -7,7 +7,7 @@ import { ScrollReveal } from "./scroll-reveal"
 
 export function AboutSection() {
   return (
-    <section id="sobre-nosotros" className="py-12 bg-white">
+    <section id="sobre-nosotros" className="py-16 md:py-24 bg-white">
       <div className="mx-auto max-w-6xl px-6">
         <SectionTitle className="mb-8">Sobre nosotros</SectionTitle>
 

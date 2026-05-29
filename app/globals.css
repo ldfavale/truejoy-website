@@ -73,11 +73,19 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
   * {
     @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
+  }
+  section[id],
+  footer[id],
+  header[id] {
+    scroll-margin-top: 72px;
   }
 }
 

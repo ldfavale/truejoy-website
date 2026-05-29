@@ -13,9 +13,31 @@ const navLinks = [
   { label: "Contacto", href: "#contacto" },
 ]
 
+const NAVBAR_OFFSET = 72
+
+function scrollToSection(href: string) {
+  const id = href.replace("#", "")
+  const element = document.getElementById(id)
+  if (!element) return
+
+  const top =
+    element.getBoundingClientRect().top + window.scrollY - NAVBAR_OFFSET
+
+  window.scrollTo({ top, behavior: "smooth" })
+}
+
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    e.preventDefault()
+    scrollToSection(href)
+    setIsOpen(false)
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,7 +59,11 @@ export function Navbar() {
       }`}>
         {/* Left: Logo */}
         <div className="flex-shrink-0 w-[120px] sm:w-[150px]">
-          <Link href="#inicio" className="block">
+          <Link
+            href="#inicio"
+            className="block"
+            onClick={(e) => handleNavClick(e, "#inicio")}
+          >
             <div className={`relative transition-all duration-300 ${isScrolled ? "w-28 h-10" : "w-36 h-12"}`}>
               <Image
                 src="/images/logo-truejoy.png"
@@ -56,6 +82,7 @@ export function Navbar() {
               <li key={link.href}>
                 <Link
                   href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
                   className="text-[#8B8B8B] hover:text-[#F5A623] transition-colors font-sans text-[13px] xl:text-sm tracking-[0.15em] whitespace-nowrap"
                 >
                   {link.label}
@@ -112,7 +139,7 @@ export function Navbar() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    onClick={() => setIsOpen(false)}
+                    onClick={(e) => handleNavClick(e, link.href)}
                     className="text-[#8B8B8B] hover:text-[#F5A623] transition-colors font-sans text-sm tracking-[0.2em]"
                   >
                     {link.label}

@@ -91,7 +91,7 @@ export function CatalogSection() {
             height={250}
             className="w-[300px] md:w-[400px] lg:w-[500px] h-auto"
           />
-          <h2 className="absolute inset-0 flex items-center justify-center text-4xl md:text-5xl lg:text-6xl font-tt-milks text-[#F5A623] mt-2">
+          <h2 className="absolute inset-0 flex items-center justify-center text-7xl md:text-8xl lg:text-8xl font-tt-milks text-[#F5A623] mt-6 md:mt-8">
             Catálogo
           </h2>
         </div>
