@@ -5,6 +5,7 @@ import { AboutSection } from "@/components/about-section"
 import { TutorialsSection } from "@/components/tutorials-section"
 import { GozateSection } from "@/components/gozate-section"
 import { ContactSection } from "@/components/contact-section"
+import TestimonialCarousel from "@/components/testimonial-carousel"
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <AboutSection />
       <TutorialsSection />
       <GozateSection />
+      <TestimonialCarousel />
       <ContactSection />
     </main>
   )
