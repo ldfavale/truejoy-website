@@ -92,9 +92,6 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Orange Line */}
-      <div className="w-full h-[2px] bg-[#F5A623]" />
-
       {/* Mobile Navigation */}
       {isOpen && (
         <div className="lg:hidden absolute top-full left-0 w-full bg-white shadow-md border-t border-gray-100">
