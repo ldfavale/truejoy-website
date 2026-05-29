@@ -5,7 +5,7 @@ import { ScrollReveal, StaggerContainer, StaggerItem } from "./scroll-reveal"
 
 export function ContactSection() {
   return (
-    <footer id="contacto" className="py-16 bg-[#4A7DE8] text-white">
+    <footer id="contacto" className="py-16 bg-true-blue text-white">
       <div className="mx-auto max-w-6xl px-6">
         <ScrollReveal variant="fadeDown" className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-sans tracking-[0.2em]">
@@ -68,7 +68,7 @@ export function ContactSection() {
                 <input
                   id="name"
                   type="text"
-                  className="w-full bg-white/10 border border-white/30 rounded-xl px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#F5A623]"
+                  className="w-full bg-white/10 border border-white/30 rounded-xl px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-true-orange"
                   placeholder="Tu nombre"
                 />
               </div>
@@ -82,7 +82,7 @@ export function ContactSection() {
                 <input
                   id="email"
                   type="email"
-                  className="w-full bg-white/10 border border-white/30 rounded-xl px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#F5A623]"
+                  className="w-full bg-white/10 border border-white/30 rounded-xl px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-true-orange"
                   placeholder="tu@email.com"
                 />
               </div>
@@ -96,13 +96,13 @@ export function ContactSection() {
                 <textarea
                   id="message"
                   rows={4}
-                  className="w-full bg-white/10 border border-white/30 rounded-xl px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#F5A623] resize-none"
+                  className="w-full bg-white/10 border border-white/30 rounded-xl px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-true-orange resize-none"
                   placeholder="Escribe tu mensaje..."
                 />
               </div>
               <button
                 type="submit"
-                className="w-full rounded-full bg-[#F5A623] px-8 py-4 text-base font-bold text-white tracking-wider uppercase transition-all hover:bg-[#e09515] hover:scale-[1.02]"
+                className="w-full rounded-full bg-true-orange px-8 py-4 text-base font-bold text-white tracking-wider uppercase transition-all hover:bg-true-orange-hover hover:scale-[1.02]"
               >
                 Enviar mensaje
               </button>

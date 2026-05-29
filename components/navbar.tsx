@@ -83,7 +83,7 @@ export function Navbar() {
                 <Link
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="text-[#8B8B8B] hover:text-[#F5A623] transition-colors font-sans text-[13px] xl:text-sm tracking-[0.15em] whitespace-nowrap"
+                  className="text-true-gray hover:text-true-orange transition-colors font-sans text-[13px] xl:text-sm tracking-[0.15em] whitespace-nowrap"
                 >
                   {link.label}
                 </Link>
@@ -99,19 +99,19 @@ export function Navbar() {
             <input 
               type="text" 
               placeholder="Buscar..." 
-              className="w-full bg-white border border-[#F5A623] text-gray-700 rounded-full py-1.5 px-4 pr-10 text-sm focus:outline-none focus:ring-1 focus:ring-[#F5A623] transition-colors"
+              className="w-full bg-white border border-true-orange text-gray-700 rounded-full py-1.5 px-4 pr-10 text-sm focus:outline-none focus:ring-1 focus:ring-true-orange transition-colors"
             />
-            <Search className="absolute right-3 text-[#F5A623] w-4 h-4" />
+            <Search className="absolute right-3 text-true-orange w-4 h-4" />
           </div>
 
-          <button className="text-[#8B8B8B] hover:text-[#F5A623] transition-colors" aria-label="Login">
+          <button className="text-true-gray hover:text-true-orange transition-colors" aria-label="Login">
             <User className="w-5 h-5 md:w-6 md:h-6" />
           </button>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden text-[#8B8B8B] hover:text-[#F5A623] p-1 ml-1"
+            className="lg:hidden text-true-gray hover:text-true-orange p-1 ml-1"
             aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -128,9 +128,9 @@ export function Navbar() {
               <input 
                 type="text" 
                 placeholder="Buscar..." 
-                className="w-full bg-white border border-[#F5A623] text-gray-700 rounded-full py-2 px-4 pr-10 text-sm focus:outline-none"
+                className="w-full bg-white border border-true-orange text-gray-700 rounded-full py-2 px-4 pr-10 text-sm focus:outline-none"
               />
-              <Search className="absolute right-3 top-1/2 -translate-y-1/2 text-[#F5A623] w-4 h-4" />
+              <Search className="absolute right-3 top-1/2 -translate-y-1/2 text-true-orange w-4 h-4" />
             </div>
           </div>
           <nav>
@@ -140,7 +140,7 @@ export function Navbar() {
                   <Link
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
-                    className="text-[#8B8B8B] hover:text-[#F5A623] transition-colors font-sans text-sm tracking-[0.2em]"
+                    className="text-true-gray hover:text-true-orange transition-colors font-sans text-sm tracking-[0.2em]"
                   >
                     {link.label}
                   </Link>

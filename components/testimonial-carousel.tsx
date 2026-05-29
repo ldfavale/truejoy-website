@@ -39,7 +39,7 @@ const testimonialsData = [
   }
 ];
 
-const TRUE_ORANGE = '#F5A623'; // var(--true-orange)
+const TRUE_ORANGE = 'var(--true-orange)';
 
 const TestimonialCarousel = () => {
   const [activeIndex, setActiveIndex] = useState(2); // Start with the middle item
@@ -79,11 +79,11 @@ const TestimonialCarousel = () => {
           transition={{ duration: 0.5 }}
           className="mb-16 min-h-[16rem] flex flex-col justify-center items-center w-full"
         >
-          <Card bgColor="#E5E5E5" textColor="#8B8B8B" className="flex-col w-full text-center">
+          <Card className="flex-col w-full text-center">
             <blockquote className="text-lg md:text-xl font-sans mb-6 text-gray-800">
               “{testimonialsData[activeIndex].text}”
             </blockquote>
-            <p className="font-sans font-bold text-[#1a365d]">{testimonialsData[activeIndex].author}</p>
+            <p className="font-sans font-bold text-true-navy">{testimonialsData[activeIndex].author}</p>
             <p className="font-sans">{testimonialsData[activeIndex].role}</p>
           </Card>
         </motion.div>

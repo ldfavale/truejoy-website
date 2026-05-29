@@ -16,7 +16,7 @@ const tutorials = [
 
 export function TutorialsSection() {
   return (
-    <section id="tutoriales" className="relative bg-[#D6E8F0] overflow-hidden py-12">
+    <section id="tutoriales" className="relative bg-true-sky overflow-hidden py-12">
       <CloudBackground />
 
       <div className="flex justify-center pt-12 pb-16 md:pb-24 relative z-10">
@@ -46,7 +46,7 @@ export function TutorialsSection() {
                 variant={tutorialVariants[index % tutorialVariants.length]}
                 className="flex flex-col items-center"
               >
-                <div className="relative w-full aspect-square bg-[#E8DCC8] rounded-xl overflow-hidden border-2 border-[#D4C8B4]">
+                <div className="relative w-full aspect-square bg-true-beige rounded-xl overflow-hidden border-2 border-true-beige-border">
                   <Image
                     src={tutorial.image}
                     alt={tutorial.alt}
@@ -54,7 +54,7 @@ export function TutorialsSection() {
                     className="object-cover"
                   />
                 </div>
-                <p className="text-[#AFAFAF] tracking-[0.15em] font-sans text-sm mt-3">
+                <p className="text-true-light-gray tracking-[0.15em] font-sans text-sm mt-3">
                   {tutorial.name}
                 </p>
               </StaggerItem>

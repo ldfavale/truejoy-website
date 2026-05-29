@@ -11,11 +11,11 @@ interface SectionTitleProps {
 
 export function SectionTitle({
   children,
-  bgClass = "bg-[#F5A623]",
+  bgClass = "bg-true-orange",
   textClass = "text-white",
   className = "",
   variant = "solid",
-  borderClass = "border-[#F5A623]",
+  borderClass = "border-true-orange",
 }: SectionTitleProps) {
   const containerClasses =
     variant === "solid"

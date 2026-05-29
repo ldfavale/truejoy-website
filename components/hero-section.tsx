@@ -5,7 +5,7 @@ import { ScrollReveal } from "./scroll-reveal"
 
 export function HeroSection() {
   return (
-    <section className="relative w-full bg-gradient-to-tr from-[#FFD166] via-[#F5A623] to-[#E8940F] py-24 md:py-36 overflow-hidden">
+    <section className="relative w-full bg-gradient-to-tr from-true-orange-light via-true-orange to-true-orange-dark py-24 md:py-36 overflow-hidden">
       <div className="mx-auto max-w-6xl px-6">
         <div className="flex flex-col items-center">
           <div className="inline-flex flex-col md:flex-row items-center justify-center gap-10 md:gap-14 overflow-visible">

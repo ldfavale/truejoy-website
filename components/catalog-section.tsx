@@ -12,18 +12,18 @@ const ageCategories = [
   {
     range: "2 - 5",
     label: "años",
-    bgColor: "bg-[#AFAFAF]",
+    bgColor: "bg-true-light-gray",
   },
   {
     range: "6 - 12",
     label: "años",
-    bgColor: "bg-[#4A7DE8]",
+    bgColor: "bg-true-blue",
   },
   {
     range: "12 - 120",
     label: "años",
-    bgColor: "bg-[#D6E8F0]",
-    textColor: "text-[#8B8B8B]",
+    bgColor: "bg-true-sky",
+    textColor: "text-true-gray",
   },
 ]
 
@@ -81,7 +81,7 @@ export function CatalogSection() {
   }
 
   return (
-    <section id="catalogo" className="bg-[#E8DCC8]">
+    <section id="catalogo" className="bg-true-beige">
       <div className="flex justify-center pt-12 pb-8">
         <div className="relative">
           <Image
@@ -91,7 +91,7 @@ export function CatalogSection() {
             height={250}
             className="w-[300px] md:w-[400px] lg:w-[500px] h-auto"
           />
-          <h2 className="absolute inset-0 flex items-center justify-center text-7xl md:text-8xl lg:text-8xl font-tt-milks text-[#F5A623] mt-6 md:mt-8">
+          <h2 className="absolute inset-0 flex items-center justify-center text-7xl md:text-8xl lg:text-8xl font-manjari font-[1000] tracking-[0.005em] text-true-orange-light mt-8 md:mt-14">
             Catálogo
           </h2>
         </div>
@@ -119,7 +119,7 @@ export function CatalogSection() {
               </StaggerItem>
             ))}
             <StaggerItem variant="bounce" className="w-full basis-full">
-              <div className="bg-[#F5A623] text-white rounded-2xl p-6 md:p-8 text-center relative cursor-pointer hover:scale-105 transition-transform">
+              <div className="bg-true-orange text-white rounded-2xl p-6 md:p-8 text-center relative cursor-pointer hover:scale-105 transition-transform">
                 <button className="absolute top-3 right-3 w-6 h-6 rounded-full bg-white/30 flex items-center justify-center">
                   <Plus className="w-4 h-4" />
                 </button>
@@ -145,7 +145,7 @@ export function CatalogSection() {
                 variant={gameCardVariants[index % gameCardVariants.length]}
                 className="flex flex-col items-center group"
               >
-                <div className="relative w-full aspect-square bg-[#E8DCC8] rounded-xl overflow-hidden border-2 border-[#D4C8B4]">
+                <div className="relative w-full aspect-square bg-true-beige rounded-xl overflow-hidden border-2 border-true-beige-border">
                   <Image
                     src={game.image}
                     alt={game.name}
@@ -156,13 +156,13 @@ export function CatalogSection() {
                   {/* Video play button overlay */}
                   <button
                     onClick={() => openVideoModal(game)}
-                    className="absolute bottom-2 right-2 w-10 h-10 bg-[#F5A623] rounded-full flex items-center justify-center shadow-lg hover:bg-[#E09520] transition-colors opacity-0 group-hover:opacity-100"
+                    className="absolute bottom-2 right-2 w-10 h-10 bg-true-orange rounded-full flex items-center justify-center shadow-lg hover:bg-true-orange-hover transition-colors opacity-0 group-hover:opacity-100"
                     aria-label={`Ver video de ${game.name}`}
                   >
                     <Play className="w-5 h-5 text-white fill-white ml-0.5" />
                   </button>
                 </div>
-                <p className="text-[#8B8B8B] tracking-[0.1em] font-sans text-sm mt-3 text-center">
+                <p className="text-true-gray tracking-[0.1em] font-sans text-sm mt-3 text-center">
                   {game.name}
                 </p>
               </StaggerItem>
@@ -184,7 +184,7 @@ export function CatalogSection() {
             {/* Close button */}
             <button
               onClick={closeModal}
-              className="absolute top-4 right-4 z-10 w-10 h-10 bg-[#F5A623] rounded-full flex items-center justify-center text-white hover:bg-[#E09520] transition-colors"
+              className="absolute top-4 right-4 z-10 w-10 h-10 bg-true-orange rounded-full flex items-center justify-center text-white hover:bg-true-orange-hover transition-colors"
               aria-label="Cerrar"
             >
               <X className="w-6 h-6" />
@@ -200,13 +200,13 @@ export function CatalogSection() {
                     className="object-contain rounded-lg"
                   />
                 </div>
-                <h3 className="text-2xl font-bold text-[#4A7DE8] mb-2">
+                <h3 className="text-2xl font-bold text-true-blue mb-2">
                   {modalContent.game.name}
                 </h3>
-                <p className="text-[#8B8B8B]">{modalContent.game.description}</p>
+                <p className="text-true-gray">{modalContent.game.description}</p>
                 <button
                   onClick={() => setModalContent({ type: "video", game: modalContent.game })}
-                  className="mt-4 flex items-center gap-2 bg-[#F5A623] text-white px-6 py-3 rounded-full hover:bg-[#E09520] transition-colors"
+                  className="mt-4 flex items-center gap-2 bg-true-orange text-white px-6 py-3 rounded-full hover:bg-true-orange-hover transition-colors"
                 >
                   <Play className="w-5 h-5 fill-white" />
                   Ver Video
@@ -223,10 +223,10 @@ export function CatalogSection() {
                     allowFullScreen
                   />
                 </div>
-                <h3 className="text-2xl font-bold text-[#4A7DE8] mb-2">
+                <h3 className="text-2xl font-bold text-true-blue mb-2">
                   {modalContent.game.name}
                 </h3>
-                <p className="text-[#8B8B8B]">{modalContent.game.description}</p>
+                <p className="text-true-gray">{modalContent.game.description}</p>
               </div>
             )}
           </div>

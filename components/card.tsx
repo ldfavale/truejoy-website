@@ -7,8 +7,8 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export function Card({ 
   children, 
-  bgColor = "#E5E5E5", 
-  textColor = "#8B8B8B", 
+  bgColor = "var(--true-neutral)", 
+  textColor = "var(--true-gray)", 
   className = "",
   style,
   ...props
