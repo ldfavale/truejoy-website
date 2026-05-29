@@ -7,17 +7,17 @@ import { useState } from "react"
 const ageCategories = [
   {
     range: "2 - 5",
-    label: "AÑOS",
+    label: "años",
     bgColor: "bg-[#AFAFAF]",
   },
   {
     range: "6 - 12",
-    label: "AÑOS",
+    label: "años",
     bgColor: "bg-[#4A7DE8]",
   },
   {
     range: "12 - 120",
-    label: "AÑOS",
+    label: "años",
     bgColor: "bg-[#D6E8F0]",
     textColor: "text-[#8B8B8B]",
   },
@@ -88,8 +88,8 @@ export function CatalogSection() {
             height={250}
             className="w-[300px] md:w-[400px] lg:w-[500px] h-auto"
           />
-          <h2 className="absolute inset-0 flex items-center justify-center text-3xl md:text-4xl lg:text-5xl font-sans text-[#F5A623] tracking-wide">
-            CATÁLOGO
+          <h2 className="absolute inset-0 flex items-center justify-center text-4xl md:text-5xl lg:text-6xl font-tt-milks text-[#F5A623] mt-2">
+            Catálogo
           </h2>
         </div>
       </div>
@@ -98,17 +98,10 @@ export function CatalogSection() {
       <div className="px-6 py-8">
         <div className="mx-auto max-w-6xl">
           <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8">
-            {/* Logo + JUEGOS */}
+            {/* JUEGOS */}
             <div className="flex flex-col items-center">
-              <Image
-                src="/images/logo-truejoy.png"
-                alt="True Joy"
-                width={160}
-                height={160}
-                className="w-32 h-32 md:w-40 md:h-40 object-contain"
-              />
-              <p className="text-[#8B8B8B] tracking-[0.3em] font-sans text-lg mt-2">
-                J U E G O S
+              <p className="text-[#8B8B8B] font-tt-milks text-3xl mt-1">
+                Juegos
               </p>
             </div>
 
@@ -122,8 +115,8 @@ export function CatalogSection() {
                   <button className="absolute top-3 right-3 w-6 h-6 rounded-full bg-white/30 flex items-center justify-center">
                     <Plus className="w-4 h-4" />
                   </button>
-                  <p className="text-3xl md:text-4xl font-bold leading-none mt-4">{cat.range}</p>
-                  <p className="text-sm tracking-[0.2em] mt-2">
+                  <p className="text-4xl md:text-5xl font-bold leading-none mt-4 font-tt-milks">{cat.range}</p>
+                  <p className="text-base mt-1 font-tt-milks">
                     {cat.label}
                   </p>
                 </div>
@@ -136,7 +129,7 @@ export function CatalogSection() {
             <button className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/30 flex items-center justify-center text-white">
               <Plus className="w-5 h-5" />
             </button>
-            <p className="text-3xl md:text-4xl lg:text-5xl text-white font-sans text-center">
+            <p className="text-4xl md:text-5xl lg:text-6xl text-white font-tt-milks text-center leading-none">
               para toda la familia
             </p>
           </div>

@@ -1,24 +1,16 @@
 "use client"
 
 import { Mail, MapPin, Phone } from "lucide-react"
-import Image from "next/image"
 
 export function ContactSection() {
   return (
     <section id="contacto" className="py-16 bg-[#4A7DE8] text-white">
       <div className="mx-auto max-w-6xl px-6">
-        {/* Header with Logo */}
-        <div className="flex items-center justify-between mb-12">
+        {/* Header */}
+        <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-sans tracking-[0.2em]">
             CONTACTO
           </h2>
-          <Image
-            src="/images/logo-truejoy.png"
-            alt="True Joy"
-            width={100}
-            height={100}
-            className="w-20 h-20 md:w-24 md:h-24 object-contain"
-          />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">

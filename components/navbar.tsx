@@ -2,7 +2,6 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import Image from "next/image"
 import { Menu, X, Search } from "lucide-react"
 
 const navLinks = [
@@ -18,18 +17,8 @@ export function Navbar() {
 
   return (
     <header className="bg-white w-full" id="inicio">
-      {/* Logo Section - Centered Large Logo */}
-      <div className="flex flex-col items-center pt-8 pb-4">
-        <Image
-          src="/images/logo-truejoy.png"
-          alt="True Joy - a la mesa con Jesús"
-          width={280}
-          height={280}
-          className="w-48 h-48 md:w-64 md:h-64 object-contain"
-          priority
-        />
-        
-        {/* Search Bar - Right aligned */}
+      {/* Search Bar Section */}
+      <div className="flex flex-col items-center pt-4 pb-2">
         <div className="mt-4 flex justify-end w-full max-w-5xl px-6">
           <button className="flex items-center gap-3 bg-[#F5A623] text-white px-8 py-3 rounded-full hover:bg-[#e09515] transition-colors shadow-sm">
             <Search className="w-5 h-5" />

@@ -5,17 +5,10 @@ export function AboutSection() {
     <section id="sobre-nosotros" className="py-12 bg-white">
       <div className="mx-auto max-w-6xl px-6">
         {/* Orange Header with Title */}
-        <div className="bg-[#F5A623] rounded-3xl p-8 md:p-12 flex items-center justify-between mb-8">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl text-white font-sans tracking-[0.3em] flex-1 text-center">
-            S O B R E  N O S O T R O S
+        <div className="bg-[#F5A623] rounded-3xl p-8 md:p-12 text-center mb-8">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl text-white font-tt-milks">
+            Sobre nosotros
           </h2>
-          <Image
-            src="/images/logo-truejoy.png"
-            alt="True Joy"
-            width={120}
-            height={120}
-            className="w-20 h-20 md:w-28 md:h-28 object-contain flex-shrink-0"
-          />
         </div>
 
         {/* Content Row */}
@@ -30,9 +23,14 @@ export function AboutSection() {
             </p>
           </div>
 
-          {/* Photo Placeholder */}
-          <div className="bg-[#E8DCC8] rounded-3xl p-8 flex items-center justify-center min-h-[200px]">
-            <span className="text-[#D4C8B4] font-sans text-2xl">FOTO</span>
+          {/* Photo */}
+          <div className="relative rounded-3xl overflow-hidden min-h-[300px] md:min-h-full">
+            <Image
+              src="/images/about-photo.jpg"
+              alt="Familia"
+              fill
+              className="object-cover"
+            />
           </div>
         </div>
       </div>

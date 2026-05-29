@@ -8,10 +8,10 @@ export function HeroSection() {
           {/* Quote - Left Side */}
           <div className="flex-1 text-center md:text-left">
             <blockquote className="mb-4">
-              <p className="text-3xl md:text-4xl lg:text-5xl text-white font-sans leading-tight">
+              <p className="text-3xl md:text-4xl lg:text-5xl text-white font-tt-milks leading-tight">
                 {'"El corazón alegre es'}
               </p>
-              <p className="text-3xl md:text-4xl lg:text-5xl text-white font-sans leading-tight">
+              <p className="text-3xl md:text-4xl lg:text-5xl text-white font-tt-milks leading-tight">
                 {'una buena medicina..."'}
               </p>
             </blockquote>
