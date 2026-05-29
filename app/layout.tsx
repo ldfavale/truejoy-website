@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Manjari, Dancing_Script } from 'next/font/google'
+import localFont from 'next/font/local'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
@@ -14,6 +15,38 @@ const dancingScript = Dancing_Script({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
   variable: '--font-dancing',
+  display: 'swap',
+})
+
+const ttMilksScript = localFont({
+  src: [
+    {
+      path: '../public/fonts/TT Milks Script Trial ExtraLight.otf',
+      weight: '200',
+      style: 'normal',
+    },
+    {
+      path: '../public/fonts/TT Milks Script Trial Light.otf',
+      weight: '300',
+      style: 'normal',
+    },
+    {
+      path: '../public/fonts/TT Milks Script Trial Regular.otf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../public/fonts/TT Milks Script Trial Bold.otf',
+      weight: '700',
+      style: 'normal',
+    },
+    {
+      path: '../public/fonts/TT Milks Script Trial ExtraBold.otf',
+      weight: '800',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-tt-milks-script',
   display: 'swap',
 })
 
@@ -46,7 +79,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="es" className={`${manjari.variable} ${dancingScript.variable} bg-background`}>
+    <html lang="es" className={`${manjari.variable} ${dancingScript.variable} ${ttMilksScript.variable} bg-background`}>
       <body className="font-sans antialiased">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}

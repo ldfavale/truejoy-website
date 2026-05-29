@@ -39,6 +39,7 @@
   --font-sans: 'Manjari', sans-serif;
   --font-mono: 'Geist Mono', 'Geist Mono Fallback';
   --font-serif: var(--font-manjari), sans-serif;
+  --font-tt-milks: var(--font-tt-milks-script), sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
