@@ -78,7 +78,7 @@ const TestimonialCarousel = () => {
           className="mb-16 min-h-[16rem] flex flex-col justify-center items-center w-full"
         >
           <Card bgColor="#E5E5E5" textColor="#8B8B8B" className="flex-col w-full text-center">
-            <blockquote className="text-2xl md:text-3xl font-sans mb-6 text-gray-800">
+            <blockquote className="text-lg md:text-xl font-sans mb-6 text-gray-800">
               “{testimonialsData[activeIndex].text}”
             </blockquote>
             <p className="font-sans font-bold text-[#1a365d]">{testimonialsData[activeIndex].author}</p>
