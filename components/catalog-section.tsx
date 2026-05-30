@@ -100,12 +100,13 @@ export function CatalogSection() {
       {/* Age Categories Section */}
       <div className="px-6 py-8">
         <div className="mx-auto max-w-5xl flex flex-col gap-6 md:gap-8">
-          <StaggerContainer className="flex flex-wrap flex-col md:flex-row gap-4 md:gap-6 w-full" stagger={0.15}>
+          {/* Age Cards */}
+          <StaggerContainer className="flex flex-col sm:flex-row gap-4 md:gap-6 w-full" stagger={0.15}>
             {ageCategories.map((cat, i) => (
               <StaggerItem
                 key={cat.range}
                 variant={ageCardVariants[i % ageCardVariants.length]}
-                className="w-full flex-1 md:flex-initial"
+                className="flex-1 w-full"
               >
                 <div
                   className={`${cat.bgColor} ${cat.textColor || "text-white"} rounded-2xl p-6 md:p-8 text-center relative cursor-pointer hover:scale-105 transition-transform h-full`}
@@ -118,12 +119,16 @@ export function CatalogSection() {
                 </div>
               </StaggerItem>
             ))}
-            <StaggerItem variant="bounce" className="w-full basis-full">
-              <div className="bg-true-orange text-white rounded-2xl p-6 md:p-8 text-center relative cursor-pointer hover:scale-105 transition-transform">
-                <button className="absolute top-3 right-3 w-6 h-6 rounded-full bg-white/30 flex items-center justify-center">
-                  <Plus className="w-4 h-4" />
+          </StaggerContainer>
+
+          {/* Para toda la familia banner */}
+          <StaggerContainer stagger={0.15} delayChildren={0.2}>
+            <StaggerItem variant="bounce">
+              <div className="bg-true-orange rounded-2xl md:rounded-3xl p-6 sm:p-8 md:p-12 relative w-full cursor-pointer hover:scale-[1.02] transition-transform">
+                <button className="absolute top-3 right-3 sm:top-4 sm:right-4 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white/30 flex items-center justify-center text-white">
+                  <Plus className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
-                <p className="text-3xl md:text-4xl lg:text-5xl font-tt-milks leading-none mt-4">
+                <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-tt-milks text-center leading-none mt-2 sm:mt-0">
                   para toda la familia
                 </p>
               </div>
@@ -135,7 +140,7 @@ export function CatalogSection() {
       <div className="px-6 py-12">
         <div className="mx-auto max-w-5xl">
           <StaggerContainer
-            className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6"
             stagger={0.08}
             delayChildren={0.05}
           >

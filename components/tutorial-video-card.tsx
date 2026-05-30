@@ -68,7 +68,7 @@ export function TutorialVideoCard({ poster, video, alt }: TutorialVideoCardProps
         src={poster}
         alt={alt}
         fill
-        sizes="(max-width: 640px) 100vw, (max-width: 768px) 33vw, 20vw"
+        sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 20vw"
         className={`object-cover transition-opacity duration-300 z-10 ${isPlaying ? "opacity-0" : "opacity-100"}`}
       />
       <video
