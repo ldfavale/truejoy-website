@@ -11,17 +11,17 @@ const gameCardVariants = ["scale", "pop", "fadeUp", "rotateIn", "wobble"] as con
 const ageCategories = [
   {
     range: "2 - 5",
-    label: "años",
+    label: "Años",
     bgColor: "bg-true-light-gray",
   },
   {
     range: "6 - 12",
-    label: "años",
+    label: "Años",
     bgColor: "bg-true-blue",
   },
   {
     range: "12 - 120",
-    label: "años",
+    label: "Años",
     bgColor: "bg-true-sky",
     textColor: "text-true-gray",
   },
@@ -115,7 +115,7 @@ export function CatalogSection() {
                     <Plus className="w-4 h-4" />
                   </button>
                   <p className="text-4xl md:text-5xl font-bold leading-none mt-4 font-tt-milks">{cat.range}</p>
-                  <p className="text-3xl mt-1 font-tt-milks">{cat.label}</p>
+                  <p className="text-3xl mt-1 font-manjari font-[1000] tracking-[0.005em]">{cat.label}</p>
                 </div>
               </StaggerItem>
             ))}
@@ -129,7 +129,7 @@ export function CatalogSection() {
                   <Plus className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
                 <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-tt-milks text-center leading-none mt-2 sm:mt-0">
-                  para toda la familia
+                  Para toda la familia
                 </p>
               </div>
             </StaggerItem>
