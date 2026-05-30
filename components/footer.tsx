@@ -32,7 +32,7 @@ export function Footer() {
         </div>
         
         {/* Bottom Text */}
-        <p className="text-lg md:text-xl tracking-[0.2em] text-true-orange font-bold uppercase">
+        <p className="text-lg md:text-xl tracking-[0.2em] text-true-orange-medium font-bold uppercase">
           JUEGOS PARA TODOS
         </p>
 

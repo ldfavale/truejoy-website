@@ -27,9 +27,12 @@
 
   /* True Joy Brand Colors — single source of truth for the site palette */
   --true-blue: #4A7DE8;
+  --true-blue-light: #7DB0F5;
+  --true-blue-medium: #6497EF;
   --true-orange: #F5A623;
   --true-orange-hover: #E09520;
   --true-orange-light: #FFD166;
+  --true-orange-medium: #FABB45;
   --true-orange-dark: #E8940F;
   --true-beige: #f1dfb6;
   --true-beige-border: #D4C8B4;
@@ -70,9 +73,12 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   --color-true-blue: var(--true-blue);
+  --color-true-blue-light: var(--true-blue-light);
+  --color-true-blue-medium: var(--true-blue-medium);
   --color-true-orange: var(--true-orange);
   --color-true-orange-hover: var(--true-orange-hover);
   --color-true-orange-light: var(--true-orange-light);
+  --color-true-orange-medium: var(--true-orange-medium);
   --color-true-orange-dark: var(--true-orange-dark);
   --color-true-beige: var(--true-beige);
   --color-true-beige-border: var(--true-beige-border);
@@ -98,6 +104,27 @@
   footer[id],
   header[id] {
     scroll-margin-top: 72px;
+  }
+}
+
+@layer utilities {
+  .bg-true-blue-medium {
+    background-color: var(--true-blue-medium);
+  }
+  .text-true-blue-medium {
+    color: var(--true-blue-medium);
+  }
+  .border-true-blue-medium {
+    border-color: var(--true-blue-medium);
+  }
+  .bg-true-orange-medium {
+    background-color: var(--true-orange-medium);
+  }
+  .text-true-orange-medium {
+    color: var(--true-orange-medium);
+  }
+  .border-true-orange-medium {
+    border-color: var(--true-orange-medium);
   }
 }
 

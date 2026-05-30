@@ -91,7 +91,7 @@ export function CatalogSection() {
             height={250}
             className="w-[300px] md:w-[400px] lg:w-[500px] h-auto"
           />
-          <h2 className="absolute inset-0 flex items-center justify-center text-7xl md:text-8xl lg:text-8xl font-manjari font-[1000] tracking-[0.005em] text-true-orange-light mt-8 md:mt-14">
+          <h2 className="absolute inset-0 flex items-center justify-center text-7xl md:text-8xl lg:text-8xl font-manjari font-[1000] tracking-[0.005em] text-true-orange-medium mt-8 md:mt-14">
             Catálogo
           </h2>
         </div>
@@ -205,7 +205,7 @@ export function CatalogSection() {
                     className="object-contain rounded-lg"
                   />
                 </div>
-                <h3 className="text-2xl font-bold text-true-blue mb-2">
+                <h3 className="text-2xl font-bold text-true-blue-medium mb-2">
                   {modalContent.game.name}
                 </h3>
                 <p className="text-true-gray">{modalContent.game.description}</p>
@@ -228,7 +228,7 @@ export function CatalogSection() {
                     allowFullScreen
                   />
                 </div>
-                <h3 className="text-2xl font-bold text-true-blue mb-2">
+                <h3 className="text-2xl font-bold text-true-blue-medium mb-2">
                   {modalContent.game.name}
                 </h3>
                 <p className="text-true-gray">{modalContent.game.description}</p>
