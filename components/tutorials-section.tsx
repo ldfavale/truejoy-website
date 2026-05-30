@@ -63,14 +63,14 @@ export function TutorialsSection() {
       <div className="px-6 relative z-10">
         <div className="mx-auto max-w-5xl">
           <StaggerContainer
-            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-6"
+            className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-6"
             stagger={0.1}
           >
             {tutorials.map((tutorial, index) => (
               <StaggerItem
                 key={index}
                 variant={tutorialVariants[index % tutorialVariants.length]}
-                className="relative flex flex-col items-center"
+                className="relative flex w-full flex-col items-center"
               >
                 <TutorialVideoCard
                   poster={tutorial.poster}

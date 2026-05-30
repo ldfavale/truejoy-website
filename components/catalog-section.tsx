@@ -105,7 +105,7 @@ export function CatalogSection() {
               <StaggerItem
                 key={cat.range}
                 variant={ageCardVariants[i % ageCardVariants.length]}
-                className="flex-1"
+                className="w-full flex-1 md:flex-initial"
               >
                 <div
                   className={`${cat.bgColor} ${cat.textColor || "text-white"} rounded-2xl p-6 md:p-8 text-center relative cursor-pointer hover:scale-105 transition-transform h-full`}
@@ -135,7 +135,7 @@ export function CatalogSection() {
       <div className="px-6 py-12">
         <div className="mx-auto max-w-5xl">
           <StaggerContainer
-            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-6"
+            className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-6"
             stagger={0.08}
             delayChildren={0.05}
           >
@@ -143,7 +143,7 @@ export function CatalogSection() {
               <StaggerItem
                 key={index}
                 variant={gameCardVariants[index % gameCardVariants.length]}
-                className="flex flex-col items-center group"
+                className="flex w-full flex-col items-center group"
               >
                 <div className="relative w-full aspect-square bg-true-beige rounded-xl overflow-hidden border-2 border-true-beige-border">
                   <Image
