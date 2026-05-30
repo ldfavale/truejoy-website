@@ -3,15 +3,41 @@
 import { CloudBackground } from "./cloud-background"
 import Image from "next/image"
 import { StaggerContainer, StaggerItem } from "./scroll-reveal"
+import { TutorialVideoCard } from "./tutorial-video-card"
 
 const tutorialVariants = ["flip", "scale", "fadeUp", "rotateIn", "slideRight"] as const
 
 const tutorials = [
-  { name: "NOMBRE", image: "/images/tutorial-1.jpg", alt: "Tutorial 1" },
-  { name: "NOMBRE", image: "/images/tutorial-2.jpg", alt: "Tutorial 2" },
-  { name: "NOMBRE", image: "/images/tutorial-3.jpg", alt: "Tutorial 3" },
-  { name: "NOMBRE", image: "/images/tutorial-4.jpg", alt: "Tutorial 4" },
-  { name: "NOMBRE", image: "/images/tutorial-5.jpg", alt: "Tutorial 5" },
+  {
+    name: "NOMBRE",
+    poster: "/images/tutorial-1.jpg",
+    video: "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4",
+    alt: "Tutorial 1",
+  },
+  {
+    name: "NOMBRE",
+    poster: "/images/tutorial-2.jpg",
+    video: "https://www.w3schools.com/html/mov_bbb.mp4",
+    alt: "Tutorial 2",
+  },
+  {
+    name: "NOMBRE",
+    poster: "/images/tutorial-3.jpg",
+    video: "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_2MB.mp4",
+    alt: "Tutorial 3",
+  },
+  {
+    name: "NOMBRE",
+    poster: "/images/tutorial-4.jpg",
+    video: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm",
+    alt: "Tutorial 4",
+  },
+  {
+    name: "NOMBRE",
+    poster: "/images/tutorial-5.jpg",
+    video: "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/720/Big_Buck_Bunny_720_10s_1MB.mp4",
+    alt: "Tutorial 5",
+  },
 ]
 
 export function TutorialsSection() {
@@ -44,16 +70,13 @@ export function TutorialsSection() {
               <StaggerItem
                 key={index}
                 variant={tutorialVariants[index % tutorialVariants.length]}
-                className="flex flex-col items-center"
+                className="relative flex flex-col items-center"
               >
-                <div className="relative w-full aspect-square bg-true-beige rounded-xl overflow-hidden border-2 border-true-beige-border">
-                  <Image
-                    src={tutorial.image}
-                    alt={tutorial.alt}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
+                <TutorialVideoCard
+                  poster={tutorial.poster}
+                  video={tutorial.video}
+                  alt={tutorial.alt}
+                />
                 <p className="text-true-light-gray tracking-[0.15em] font-sans text-sm mt-3">
                   {tutorial.name}
                 </p>
