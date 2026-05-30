@@ -1,8 +1,24 @@
 "use client"
 
-import { useRef } from "react"
+import { useRef, useSyncExternalStore } from "react"
 import Image from "next/image"
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion"
+
+const MOBILE_MQ = "(max-width: 767px)"
+
+function subscribeMobileMq(onStoreChange: () => void) {
+  const mq = window.matchMedia(MOBILE_MQ)
+  mq.addEventListener("change", onStoreChange)
+  return () => mq.removeEventListener("change", onStoreChange)
+}
+
+function getMobileMqSnapshot() {
+  return window.matchMedia(MOBILE_MQ).matches
+}
+
+function useIsMobileViewport() {
+  return useSyncExternalStore(subscribeMobileMq, getMobileMqSnapshot, () => false)
+}
 
 type CloudConfig = {
   top: string
@@ -15,10 +31,32 @@ type CloudConfig = {
   floatDelay: number
 }
 
+/** Lighter set for narrow viewports — spaced rows with a few accent clouds between. */
+const CLOUDS_MOBILE: CloudConfig[] = [
+  { top: "4%", left: "0%", size: 52, speed: 0.25, opacity: 0.7, floatDuration: 7, floatDelay: 0 },
+  { top: "8%", left: "32%", size: 46, speed: 0.22, opacity: 0.65, floatDuration: 6.5, floatDelay: 1.1 },
+  { top: "10%", left: "58%", size: 62, speed: 0.4, opacity: 0.78, floatDuration: 6, floatDelay: 0.8 },
+
+  { top: "26%", left: "6%", size: 58, speed: 0.35, opacity: 0.72, floatDuration: 7.5, floatDelay: 0.3 },
+  { top: "28%", left: "38%", size: 50, speed: 0.28, opacity: 0.68, floatDuration: 5.8, floatDelay: 1.4 },
+  { top: "30%", left: "54%", size: 68, speed: 0.5, opacity: 0.82, floatDuration: 8, floatDelay: 0.6 },
+
+  { top: "48%", left: "2%", size: 64, speed: 0.45, opacity: 0.76, floatDuration: 6.8, floatDelay: 0.5 },
+  { top: "50%", left: "36%", size: 48, speed: 0.26, opacity: 0.66, floatDuration: 7.2, floatDelay: 0.2 },
+  { top: "52%", left: "56%", size: 54, speed: 0.3, opacity: 0.7, floatDuration: 6.2, floatDelay: 0.9 },
+
+  { top: "70%", left: "8%", size: 66, speed: 0.5, opacity: 0.8, floatDuration: 7, floatDelay: 1.3 },
+  { top: "72%", left: "62%", size: 52, speed: 0.36, opacity: 0.72, floatDuration: 6.6, floatDelay: 1.5 },
+  { top: "74%", left: "50%", size: 56, speed: 0.38, opacity: 0.74, floatDuration: 6.4, floatDelay: 0.7 },
+
+  { top: "88%", left: "20%", size: 60, speed: 0.44, opacity: 0.75, floatDuration: 7.4, floatDelay: 0.8 },
+  { top: "90%", left: "68%", size: 54, speed: 0.32, opacity: 0.7, floatDuration: 5.9, floatDelay: 1 },
+]
+
 /**
  * Organized staggered grid — 5 rows, alternating offsets for a natural but tidy rhythm.
  */
-const CLOUDS: CloudConfig[] = [
+const CLOUDS_DESKTOP: CloudConfig[] = [
   // Row 1
   { top: "2%", left: "3%", size: 85, speed: 0.25, opacity: 0.75, floatDuration: 7, floatDelay: 0 },
   { top: "5%", left: "20%", size: 110, speed: 0.45, opacity: 0.88, floatDuration: 6, floatDelay: 0.8 },
@@ -124,6 +162,8 @@ function ParallaxCloud({
 export function CloudBackground() {
   const containerRef = useRef<HTMLDivElement>(null)
   const reducedMotion = useReducedMotion()
+  const isMobile = useIsMobileViewport()
+  const clouds = isMobile ? CLOUDS_MOBILE : CLOUDS_DESKTOP
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -132,7 +172,7 @@ export function CloudBackground() {
 
   return (
     <div ref={containerRef} className="absolute inset-0 overflow-hidden pointer-events-none">
-      {CLOUDS.map((cloud, index) => (
+      {clouds.map((cloud, index) => (
         <ParallaxCloud
           key={index}
           cloud={cloud}

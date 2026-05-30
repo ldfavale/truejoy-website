@@ -42,28 +42,29 @@ const tutorials = [
 
 export function TutorialsSection() {
   return (
-    <section id="tutoriales" className="relative bg-true-sky overflow-hidden py-12">
+    <section id="tutoriales" className="relative bg-true-sky overflow-hidden py-20 sm:py-12">
       <CloudBackground />
 
-      <div className="flex justify-center pt-12 pb-16 md:pb-24 relative z-10">
-        <div className="relative">
+      <div className="flex justify-center px-4 pt-16 pb-36 sm:pt-12 sm:pb-20 md:pb-28 relative z-10">
+        <div className="relative w-[min(92vw,26rem)] sm:w-auto">
           <Image
             src="/images/cloud_beige.png"
             alt=""
             width={500}
             height={250}
-            className="w-[300px] md:w-[400px] lg:w-[500px] h-auto"
+            className="w-full sm:w-[400px] lg:w-[500px] h-auto"
+            priority
           />
-          <h2 className="absolute inset-0 flex items-center justify-center text-7xl md:text-8xl lg:text-8xl font-tt-milks text-white mt-6 md:mt-8">
+          <h2 className="absolute inset-0 flex items-center justify-center text-8xl leading-none sm:text-7xl md:text-8xl font-tt-milks text-white mt-8 sm:mt-6 md:mt-8">
             Tutoriales
           </h2>
         </div>
       </div>
 
-      <div className="px-6 relative z-10">
+      <div className="px-6 pt-4 pb-4 sm:pt-0 relative z-10">
         <div className="mx-auto max-w-5xl">
           <StaggerContainer
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 sm:gap-4 md:gap-6"
             stagger={0.1}
           >
             {tutorials.map((tutorial, index) => (
@@ -77,7 +78,7 @@ export function TutorialsSection() {
                   video={tutorial.video}
                   alt={tutorial.alt}
                 />
-                <p className="text-true-light-gray tracking-[0.15em] font-sans text-sm mt-3">
+                <p className="text-true-light-gray tracking-[0.15em] font-sans text-sm mt-6 sm:mt-3">
                   {tutorial.name}
                 </p>
               </StaggerItem>
@@ -86,7 +87,7 @@ export function TutorialsSection() {
         </div>
       </div>
 
-      <div className="h-8 mt-8" />
+      <div className="h-14 mt-16 sm:h-8 sm:mt-8" />
     </section>
   )
 }
