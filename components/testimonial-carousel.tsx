@@ -39,7 +39,7 @@ const testimonialsData = [
   }
 ];
 
-const TRUE_ORANGE = 'var(--true-orange)';
+const TRUE_GRAY_LIGHT = 'var(--true-lighter-gray)';
 
 const TestimonialCarousel = () => {
   const [activeIndex, setActiveIndex] = useState(2); // Start with the middle item
@@ -107,9 +107,9 @@ const TestimonialCarousel = () => {
               <motion.div
                 className="p-1 rounded-full"
                 variants={{
-                  inactive: { scale: 0.9, boxShadow: `0 0 0 0px ${TRUE_ORANGE}` },
-                  active:   { scale: 1.1, boxShadow: `0 0 0 3px ${TRUE_ORANGE}` },
-                  hover:    { scale: 1,   boxShadow: `0 0 0 3px ${TRUE_ORANGE}` }
+                  inactive: { scale: 0.9, boxShadow: `0 0 0 0px ${TRUE_GRAY_LIGHT}` },
+                  active:   { scale: 1.1, boxShadow: `0 0 0 3px ${TRUE_GRAY_LIGHT}` },
+                  hover:    { scale: 1,   boxShadow: `0 0 0 3px ${TRUE_GRAY_LIGHT}` }
                 }}
                 transition={{ duration: 0.3 }}
               >

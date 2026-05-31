@@ -39,6 +39,7 @@
   --true-sky: #D6E8F0;
   --true-gray: #8B8B8B;
   --true-light-gray: #AFAFAF;
+  --true-lighter-gray: #d6d6d6;
   --true-cream: #F5EDE0;
   --true-neutral: #E5E5E5;
   --true-navy: #1a365d;
@@ -85,6 +86,7 @@
   --color-true-sky: var(--true-sky);
   --color-true-gray: var(--true-gray);
   --color-true-light-gray: var(--true-light-gray);
+  --color-true-lighter-gray: var(--true-lighter-gray);
   --color-true-cream: var(--true-cream);
   --color-true-neutral: var(--true-neutral);
   --color-true-navy: var(--true-navy);

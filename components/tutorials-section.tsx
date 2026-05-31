@@ -55,7 +55,7 @@ export function TutorialsSection() {
             className="w-full sm:w-[400px] lg:w-[500px] h-auto"
             priority
           />
-          <h2 className="absolute inset-0 flex items-center justify-center text-8xl leading-none sm:text-7xl md:text-8xl font-manjari font-[1000] tracking-[0.005em] text-white mt-8 sm:mt-6 md:mt-8">
+          <h2 className="absolute inset-0 flex items-center justify-center text-8xl leading-none sm:text-7xl md:text-8xl font-manjari font-[1000] tracking-[0] text-white mt-8 sm:mt-6 md:mt-20">
             Tutoriales
           </h2>
         </div>
