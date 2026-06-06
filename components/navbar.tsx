@@ -3,20 +3,21 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { usePathname, useRouter } from "next/navigation"
 import { Menu, X, Search, User } from "lucide-react"
 
 const navLinks = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Catálogo", href: "#catalogo" },
-  { label: "Tutoriales", href: "#tutoriales" },
-  { label: "Sobre nosotros", href: "#sobre-nosotros" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Inicio", href: "/#inicio" },
+  { label: "Catálogo", href: "/#catalogo" },
+  { label: "Tutoriales", href: "/#tutoriales" },
+  { label: "Sobre nosotros", href: "/#sobre-nosotros" },
+  { label: "Contacto", href: "/#contacto" },
 ]
 
 const NAVBAR_OFFSET = 72
 
 function scrollToSection(href: string) {
-  const id = href.replace("#", "")
+  const id = href.replace("/#", "").replace("#", "")
   const element = document.getElementById(id)
   if (!element) return
 
@@ -29,13 +30,18 @@ function scrollToSection(href: string) {
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const pathname = usePathname()
+  const router = useRouter()
 
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string
   ) => {
-    e.preventDefault()
-    scrollToSection(href)
+    if (pathname === "/") {
+      e.preventDefault()
+      scrollToSection(href)
+    }
+    // Si no estamos en el home, el comportamiento por defecto de Link nos llevará al "/" con el hash correspondiente.
     setIsOpen(false)
   }
 
@@ -46,6 +52,7 @@ export function Navbar() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
 
   return (
     <header 
@@ -60,9 +67,9 @@ export function Navbar() {
         {/* Left: Logo */}
         <div className="flex-shrink-0 w-[120px] sm:w-[150px]">
           <Link
-            href="#inicio"
+            href="/#inicio"
             className="block"
-            onClick={(e) => handleNavClick(e, "#inicio")}
+            onClick={(e) => handleNavClick(e, "/#inicio")}
           >
             <div className={`relative transition-all duration-300 ${isScrolled ? "w-28 h-10" : "w-36 h-12"}`}>
               <Image

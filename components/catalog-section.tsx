@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link"
 import { Plus, Play, X } from "lucide-react"
 import { useState } from "react"
 import { StaggerContainer, StaggerItem } from "./scroll-reveal"
@@ -173,6 +174,16 @@ export function CatalogSection() {
               </StaggerItem>
             ))}
           </StaggerContainer>
+
+          {/* Botón para ver catálogo completo */}
+          <div className="flex justify-center mt-12">
+            <Link
+              href="/productos"
+              className="inline-flex items-center gap-2 bg-true-orange hover:bg-true-orange-hover text-white font-manjari font-[1000] tracking-[0.05em] text-lg px-8 py-4 rounded-full transition-transform hover:scale-105 shadow-md hover:shadow-lg"
+            >
+              Ver Catálogo Completo
+            </Link>
+          </div>
         </div>
       </div>
 
