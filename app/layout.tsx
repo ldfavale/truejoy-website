@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Manjari, Dancing_Script } from 'next/font/google'
 import localFont from 'next/font/local'
 import { Analytics } from '@vercel/analytics/next'
+import { CartProvider } from '@/context/cart-context'
 import './globals.css'
 
 const manjari = Manjari({
@@ -81,8 +82,10 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${manjari.variable} ${dancingScript.variable} ${ttMilksScript.variable} bg-background`}>
       <body className="font-sans antialiased">
-        {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
+        <CartProvider>
+          {children}
+          {process.env.NODE_ENV === 'production' && <Analytics />}
+        </CartProvider>
       </body>
     </html>
   )

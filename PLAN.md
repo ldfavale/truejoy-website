@@ -14,7 +14,7 @@ Este plan detalla el desarrollo paso a paso del e-commerce para Truejoy utilizan
 
 ---
 
-### [ ] Fase 2: Carrito de Compras Local
+### [x] Fase 2: Carrito de Compras Local
 * **Entregable**: Botón "Añadir al carrito", panel lateral interactivo (drawer) para modificar cantidades, persistencia en el navegador.
 * **Conceptos clave a aprender**:
   * **Next.js / React**: Client Components (uso de `"use client"` para interactividad), Context API (estado global para el carrito), y control de la deshidratación/hidratación (evitar errores cuando el HTML de servidor no coincide con el del cliente).

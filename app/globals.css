@@ -35,6 +35,7 @@
   --true-orange-medium: #FABB45;
   --true-orange-dark: #E8940F;
   --true-beige: #f1dfb6;
+  --true-beige-light: #f9f2e2;
   --true-beige-border: #D4C8B4;
   --true-sky: #D6E8F0;
   --true-gray: #8B8B8B;
@@ -82,6 +83,7 @@
   --color-true-orange-medium: var(--true-orange-medium);
   --color-true-orange-dark: var(--true-orange-dark);
   --color-true-beige: var(--true-beige);
+  --color-true-beige-light: var(--true-beige-light);
   --color-true-beige-border: var(--true-beige-border);
   --color-true-sky: var(--true-sky);
   --color-true-gray: var(--true-gray);

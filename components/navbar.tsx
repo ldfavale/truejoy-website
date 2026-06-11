@@ -4,7 +4,9 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { usePathname, useRouter } from "next/navigation"
-import { Menu, X, Search, User } from "lucide-react"
+import { Menu, X, Search, User, ShoppingCart } from "lucide-react"
+import { useCart } from "@/context/cart-context"
+import { CartDrawer } from "@/components/cart-drawer"
 
 const navLinks = [
   { label: "Inicio", href: "/#inicio" },
@@ -32,6 +34,7 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const pathname = usePathname()
   const router = useRouter()
+  const { itemCount, openCart } = useCart()
 
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -55,6 +58,7 @@ export function Navbar() {
 
 
   return (
+    <>
     <header 
       className={`w-full sticky top-0 z-50 transition-all duration-300 ${
         isScrolled ? "bg-white/90 backdrop-blur-md shadow-sm" : "bg-white"
@@ -111,6 +115,20 @@ export function Navbar() {
             <Search className="absolute right-3 text-true-orange w-4 h-4" />
           </div>
 
+          {/* Cart Button */}
+          <button
+            onClick={openCart}
+            className="relative text-true-gray hover:text-true-orange transition-colors cursor-pointer"
+            aria-label={`Carrito (${itemCount} productos)`}
+          >
+            <ShoppingCart className="w-5 h-5 md:w-6 md:h-6" />
+            {itemCount > 0 && (
+              <span className="absolute -top-2 -right-2 bg-true-orange text-white text-[10px] font-[1000] w-4 h-4 rounded-full flex items-center justify-center leading-none">
+                {itemCount > 9 ? "9+" : itemCount}
+              </span>
+            )}
+          </button>
+
           <button className="text-true-gray hover:text-true-orange transition-colors" aria-label="Login">
             <User className="w-5 h-5 md:w-6 md:h-6" />
           </button>
@@ -158,5 +176,9 @@ export function Navbar() {
         </div>
       )}
     </header>
+
+    {/* El CartDrawer se renderiza fuera del <header> pero dentro del mismo componente */}
+    <CartDrawer />
+    </>
   )
 }

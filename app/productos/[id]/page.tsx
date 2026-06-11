@@ -7,6 +7,7 @@ import { Footer } from "@/components/footer"
 import { createClient } from "@/lib/supabase/server"
 import { Product } from "@/lib/types"
 import { MOCK_PRODUCTS } from "@/lib/mock-data"
+import { AddToCartButton } from "./add-to-cart-button"
 
 interface ProductPageProps {
   params: Promise<{
@@ -146,15 +147,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
 
               {/* Actions */}
               <div className="flex flex-col gap-3">
-                <button 
-                  disabled={product.stock === 0}
-                  className="w-full bg-true-orange text-white py-4 rounded-2xl font-bold hover:bg-true-orange-hover transition-colors shadow-sm text-lg cursor-pointer disabled:bg-true-light-gray disabled:cursor-not-allowed"
-                >
-                  Añadir al Carrito
-                </button>
-                <div className="text-center text-xs text-true-gray">
-                  * La funcionalidad del carrito de compras se implementará en la Fase 2.
-                </div>
+                <AddToCartButton product={product} />
               </div>
             </div>
           </div>

@@ -3,8 +3,9 @@
 import { useState, useMemo } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { Search, Eye, Play, X, SlidersHorizontal, ArrowUpDown, HelpCircle } from "lucide-react"
+import { Search, Eye, Play, X, SlidersHorizontal, ArrowUpDown, HelpCircle, ShoppingCart } from "lucide-react"
 import { Product } from "@/lib/types"
+import { useCart } from "@/context/cart-context"
 
 interface CatalogPageClientProps {
   products: Product[]
@@ -17,6 +18,7 @@ export function CatalogPageClient({ products }: CatalogPageClientProps) {
   const [selectedCategory, setSelectedCategory] = useState("Todos")
   const [selectedAge, setSelectedAge] = useState("Todos")
   const [sortBy, setSortBy] = useState<SortOption>("name-asc")
+  const { addItem } = useCart()
   
   // Modal states for preview
   const [modalProduct, setModalProduct] = useState<Product | null>(null)
@@ -101,7 +103,7 @@ export function CatalogPageClient({ products }: CatalogPageClientProps) {
               placeholder="Buscar juegos por nombre o descripción..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-true-cream border-2 border-true-beige focus:border-true-orange text-true-navy rounded-full py-3 px-6 pr-12 focus:outline-none transition-colors"
+              className="w-full bg-true-beige-light border-0 border-true-beige focus:border-1 focus:border-true-orange text-true-navy rounded-full py-3 px-6 pr-12 focus:outline-none transition-colors"
             />
             <Search className="absolute right-4 top-1/2 -translate-y-1/2 text-true-orange w-5 h-5" />
           </div>
@@ -115,7 +117,7 @@ export function CatalogPageClient({ products }: CatalogPageClientProps) {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as SortOption)}
-              className="bg-true-cream border border-true-beige text-true-navy py-2.5 px-4 rounded-xl focus:outline-none focus:ring-1 focus:ring-true-orange w-full md:w-48 text-sm font-semibold cursor-pointer"
+              className="bg-true-beige-light border border-true-beige text-true-navy py-2.5 px-4 rounded-xl focus:outline-none focus:ring-1 focus:ring-true-orange w-full md:w-48 text-sm font-semibold cursor-pointer"
             >
               <option value="name-asc">Nombre (A-Z)</option>
               <option value="price-asc">Menor precio</option>
@@ -140,7 +142,7 @@ export function CatalogPageClient({ products }: CatalogPageClientProps) {
                 className={`px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer ${
                   selectedCategory === cat
                     ? "bg-true-blue text-white shadow-sm"
-                    : "bg-true-cream text-true-navy hover:bg-true-beige/35"
+                    : "bg-true-beige-light text-true-navy hover:bg-true-beige/35"
                 }`}
               >
                 {cat}
@@ -161,7 +163,7 @@ export function CatalogPageClient({ products }: CatalogPageClientProps) {
                 className={`px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer ${
                   selectedAge === age.value
                     ? "bg-true-orange text-white shadow-sm"
-                    : "bg-true-cream text-true-navy hover:bg-true-beige/35"
+                    : "bg-true-beige-light text-true-navy hover:bg-true-beige/35"
                 }`}
               >
                 {age.label}
@@ -180,7 +182,7 @@ export function CatalogPageClient({ products }: CatalogPageClientProps) {
               className="bg-white rounded-3xl overflow-hidden border border-true-beige-border/50 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all flex flex-col justify-between group"
             >
               {/* Product Image */}
-              <div className="relative aspect-square w-full bg-true-cream border-b border-true-neutral/50 overflow-hidden">
+              <div className="relative aspect-square w-full bg-true-beige-light border-b border-true-neutral/50 overflow-hidden">
                 <Image
                   src={product.image_url || "/images/placeholder.jpg"}
                   alt={product.name}
@@ -256,14 +258,17 @@ export function CatalogPageClient({ products }: CatalogPageClientProps) {
                   <div className="flex gap-2">
                     <Link
                       href={`/productos/${product.id}`}
-                      className="flex-1 text-center bg-true-cream hover:bg-true-beige/35 text-true-navy text-xs font-bold py-2.5 rounded-xl border border-true-beige-border transition-colors"
+                      className="flex-1 text-center bg-true-beige-light hover:bg-true-beige/35 text-true-navy text-xs font-bold py-2.5 rounded-xl border border-true-beige-border transition-colors"
                     >
                       Detalles
                     </Link>
                     <button
                       disabled={product.stock === 0}
-                      className="flex-1 bg-true-orange hover:bg-true-orange-hover disabled:bg-true-light-gray disabled:cursor-not-allowed text-white text-xs font-bold py-2.5 rounded-xl transition-colors cursor-pointer"
+                      onClick={() => addItem(product)}
+                      className="flex-1 flex items-center justify-center gap-1.5 bg-true-orange hover:bg-true-orange-hover disabled:bg-true-light-gray disabled:cursor-not-allowed text-white text-xs font-bold py-2.5 rounded-xl transition-colors cursor-pointer"
+                      aria-label={`Añadir ${product.name} al carrito`}
                     >
+                      <ShoppingCart className="w-3.5 h-3.5" />
                       Añadir
                     </button>
                   </div>
@@ -315,7 +320,7 @@ export function CatalogPageClient({ products }: CatalogPageClientProps) {
 
             {modalType === "image" ? (
               <div className="p-6">
-                <div className="relative aspect-video w-full mb-4 bg-true-cream rounded-xl overflow-hidden">
+                <div className="relative aspect-video w-full mb-4 bg-true-beige-light rounded-xl overflow-hidden">
                   <Image
                     src={modalProduct.image_url || "/images/placeholder.jpg"}
                     alt={modalProduct.name}

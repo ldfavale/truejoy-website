@@ -5,6 +5,7 @@ import Link from "next/link"
 import { Plus, Play, X } from "lucide-react"
 import { useState } from "react"
 import { StaggerContainer, StaggerItem } from "./scroll-reveal"
+import { CloudTitle } from "./cloud-title"
 
 const ageCardVariants = ["rotateIn", "bounce", "slideLeft"] as const
 const gameCardVariants = ["scale", "pop", "fadeUp", "rotateIn", "wobble"] as const
@@ -83,20 +84,7 @@ export function CatalogSection() {
 
   return (
     <section id="catalogo" className="bg-true-beige">
-      <div className="flex justify-center pt-12 pb-8">
-        <div className="relative">
-          <Image
-            src="/images/cloud.png"
-            alt=""
-            width={500}
-            height={250}
-            className="w-[300px] md:w-[400px] lg:w-[500px] h-auto"
-          />
-          <h2 className="absolute inset-0 flex items-center justify-center text-7xl md:text-8xl lg:text-8xl font-manjari font-[1000] tracking-[0.005em] text-true-orange-medium mt-8 md:mt-14">
-            Catálogo
-          </h2>
-        </div>
-      </div>
+      <CloudTitle title="Catálogo" />
 
       {/* Age Categories Section */}
       <div className="px-6 py-8">

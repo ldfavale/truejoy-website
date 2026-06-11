@@ -5,6 +5,7 @@ import { CatalogPageClient } from "@/components/catalog-page-client"
 import { createClient } from "@/lib/supabase/server"
 import { Product } from "@/lib/types"
 import { MOCK_PRODUCTS } from "@/lib/mock-data"
+import { CloudTitle } from "@/components/cloud-title"
 
 export const metadata: Metadata = {
   title: "Catálogo de Juegos de Mesa Cristianos - True Joy",
@@ -34,23 +35,13 @@ export default async function ProductosPage() {
   const productsList = products.length > 0 ? products : MOCK_PRODUCTS
 
   return (
-    <div className="min-h-screen bg-true-cream flex flex-col">
+    <div className="min-h-screen bg-true-beige-light  flex flex-col">
       <Navbar />
       
       <main className="flex-1">
         {/* Banner de Cabecera */}
-        <div className="bg-true-sky py-16 px-6 text-center border-b border-true-beige-border/30 relative overflow-hidden">
-          <div className="relative z-10 max-w-4xl mx-auto">
-            <span className="text-xs tracking-[0.2em] font-[1000] text-true-orange-dark uppercase block mb-3 font-sans">
-              DIVERSIÓN CON PROPÓSITO
-            </span>
-            <h1 className="text-5xl md:text-6xl font-manjari font-[1000] tracking-[0.005em] text-true-navy leading-none">
-              Catálogo de Juegos
-            </h1>
-            <p className="text-true-gray font-sans text-sm md:text-base mt-4 max-w-xl mx-auto leading-relaxed">
-              Encuentra el juego perfecto para tu grupo de jóvenes, familia o escuela bíblica. Diseñados para divertir y enseñar la palabra de Dios.
-            </p>
-          </div>
+        <div className="bg-true-beige py-4 px-6 text-center border-b border-true-beige-border/30 relative overflow-hidden">
+          <CloudTitle title="Catálogo" />
         </div>
 
         {/* Client catalog component handles searching/filtering */}
