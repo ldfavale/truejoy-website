@@ -30,6 +30,7 @@ export function CatalogPageClient() {
   const searchParams = useSearchParams()
   const categoryParam = searchParams.get("category")
   const ageParam = searchParams.get("age")
+  const searchParam = searchParams.get("search")
 
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("Todos")
@@ -61,6 +62,10 @@ export function CatalogPageClient() {
       setSelectedAge("Todos")
     }
   }, [ageParam])
+
+  useEffect(() => {
+    setSearchQuery(searchParam ?? "")
+  }, [searchParam])
 
   useEffect(() => {
     setCurrentPage(1)

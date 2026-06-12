@@ -32,9 +32,20 @@ function scrollToSection(href: string) {
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [searchQuery, setSearchQuery] = useState("")
   const pathname = usePathname()
   const router = useRouter()
   const { itemCount, openCart } = useCart()
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    const trimmed = searchQuery.trim()
+    if (!trimmed) return
+
+    router.push(`/productos?search=${encodeURIComponent(trimmed)}`)
+    setSearchQuery("")
+    setIsOpen(false)
+  }
 
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -106,14 +117,26 @@ export function Navbar() {
         {/* Right: Search, Login & Mobile Toggle */}
         <div className="flex items-center gap-3 md:gap-4 justify-end flex-shrink-0 w-auto lg:w-[300px]">
           {/* Search Input */}
-          <div className="relative hidden md:flex items-center w-full max-w-[200px]">
-            <input 
-              type="text" 
-              placeholder="Buscar..." 
+          <form
+            onSubmit={handleSearchSubmit}
+            className="relative hidden md:flex items-center w-full max-w-[200px]"
+          >
+            <input
+              type="search"
+              placeholder="Buscar..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full bg-white border border-true-orange text-gray-700 rounded-full py-1.5 px-4 pr-10 text-sm focus:outline-none focus:ring-1 focus:ring-true-orange transition-colors"
+              aria-label="Buscar juegos"
             />
-            <Search className="absolute right-3 text-true-orange w-4 h-4" />
-          </div>
+            <button
+              type="submit"
+              className="absolute right-3 text-true-orange"
+              aria-label="Buscar"
+            >
+              <Search className="w-4 h-4" />
+            </button>
+          </form>
 
           {/* Cart Button */}
           <button
@@ -148,16 +171,28 @@ export function Navbar() {
       {isOpen && (
         <div className="lg:hidden absolute top-full left-0 w-full bg-white shadow-md border-t border-gray-100">
           {/* Mobile Search */}
-          <div className="md:hidden px-6 py-4 border-b border-gray-100">
+          <form
+            onSubmit={handleSearchSubmit}
+            className="md:hidden px-6 py-4 border-b border-gray-100"
+          >
             <div className="relative w-full">
-              <input 
-                type="text" 
-                placeholder="Buscar..." 
+              <input
+                type="search"
+                placeholder="Buscar..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full bg-white border border-true-orange text-gray-700 rounded-full py-2 px-4 pr-10 text-sm focus:outline-none"
+                aria-label="Buscar juegos"
               />
-              <Search className="absolute right-3 top-1/2 -translate-y-1/2 text-true-orange w-4 h-4" />
+              <button
+                type="submit"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-true-orange"
+                aria-label="Buscar"
+              >
+                <Search className="w-4 h-4" />
+              </button>
             </div>
-          </div>
+          </form>
           <nav>
             <ul className="flex flex-col items-center gap-4 py-6">
               {navLinks.map((link) => (
