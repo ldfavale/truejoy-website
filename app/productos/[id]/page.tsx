@@ -61,7 +61,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
         <div className="max-w-6xl mx-auto">
           {/* Back Button */}
           <Link
-            href="/#catalogo"
+            href="/productos"
             className="inline-flex items-center gap-2 text-true-gray hover:text-true-orange transition-colors font-semibold text-sm mb-8"
           >
             <ArrowLeft className="w-4 h-4" />

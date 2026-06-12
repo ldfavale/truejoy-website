@@ -1,4 +1,5 @@
 import { Metadata } from "next"
+import { Suspense } from "react"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { CatalogPageClient } from "@/components/catalog-page-client"
@@ -45,7 +46,9 @@ export default async function ProductosPage() {
         </div>
 
         {/* Client catalog component handles searching/filtering */}
-        <CatalogPageClient products={productsList} />
+        <Suspense fallback={<div className="text-center py-12 text-true-gray">Cargando catálogo...</div>}>
+          <CatalogPageClient products={productsList} />
+        </Suspense>
       </main>
 
       <Footer />

@@ -1,8 +1,9 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { useSearchParams, useRouter } from "next/navigation"
 import { Search, Eye, Play, X, SlidersHorizontal, ArrowUpDown, HelpCircle, ShoppingCart } from "lucide-react"
 import { Product } from "@/lib/types"
 import { useCart } from "@/context/cart-context"
@@ -14,11 +15,33 @@ interface CatalogPageClientProps {
 type SortOption = "name-asc" | "price-asc" | "price-desc" | "newest"
 
 export function CatalogPageClient({ products }: CatalogPageClientProps) {
+  const router = useRouter()
+  const searchParams = useSearchParams()
+  const categoryParam = searchParams.get("category")
+  const ageParam = searchParams.get("age")
+
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("Todos")
   const [selectedAge, setSelectedAge] = useState("Todos")
   const [sortBy, setSortBy] = useState<SortOption>("name-asc")
   const { addItem } = useCart()
+
+  // Sincronizar el estado con los parámetros de búsqueda de la URL
+  useEffect(() => {
+    if (categoryParam) {
+      setSelectedCategory(categoryParam)
+    } else {
+      setSelectedCategory("Todos")
+    }
+  }, [categoryParam])
+
+  useEffect(() => {
+    if (ageParam) {
+      setSelectedAge(ageParam)
+    } else {
+      setSelectedAge("Todos")
+    }
+  }, [ageParam])
   
   // Modal states for preview
   const [modalProduct, setModalProduct] = useState<Product | null>(null)
@@ -179,7 +202,8 @@ export function CatalogPageClient({ products }: CatalogPageClientProps) {
           {filteredProducts.map((product) => (
             <div
               key={product.id}
-              className="bg-white rounded-3xl overflow-hidden border border-true-beige-border/50 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all flex flex-col justify-between group"
+              className="bg-white rounded-3xl overflow-hidden border border-true-beige-border/50 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all flex flex-col justify-between group cursor-pointer"
+              onClick={() => router.push(`/productos/${product.id}`)}
             >
               {/* Product Image */}
               <div className="relative aspect-square w-full bg-true-beige-light border-b border-true-neutral/50 overflow-hidden">
@@ -187,37 +211,26 @@ export function CatalogPageClient({ products }: CatalogPageClientProps) {
                   src={product.image_url || "/images/placeholder.jpg"}
                   alt={product.name}
                   fill
-                  sizes="(max-w-7xl) 25vw, 100vw"
+                  sizes="(max-width: 768px) 100vw, 25vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                
-                {/* Overlay details buttons */}
-                <div className="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
-                  <button
-                    onClick={() => {
-                      setModalProduct(product)
-                      setModalType("image")
-                    }}
-                    className="p-3 bg-white hover:bg-true-orange hover:text-white rounded-full text-true-navy shadow transition-colors cursor-pointer"
-                    aria-label="Ver imagen ampliada"
-                  >
-                    <Eye className="w-5 h-5" />
-                  </button>
-                  {product.video_url && (
-                    <button
-                      onClick={() => {
-                        setModalProduct(product)
-                        setModalType("video")
-                      }}
-                      className="p-3 bg-white hover:bg-true-orange hover:text-white rounded-full text-true-navy shadow transition-colors cursor-pointer"
-                      aria-label="Ver video tutorial"
-                    >
-                      <Play className="w-5 h-5 fill-current" />
-                    </button>
-                  )}
-                </div>
 
-                {/* Age category badge floating */}
+                {/* Video play button overlay */}
+                {product.video_url && (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      setModalProduct(product)
+                      setModalType("video")
+                    }}
+                    className="absolute bottom-2 right-2 w-10 h-10 bg-true-orange rounded-full flex items-center justify-center shadow-lg hover:bg-true-orange-hover transition-colors opacity-0 group-hover:opacity-100"
+                    aria-label={`Ver video de ${product.name}`}
+                  >
+                    <Play className="w-5 h-5 text-white fill-white ml-0.5" />
+                  </button>
+                )}
+
+                {/* Age category badge */}
                 {product.age_range && (
                   <span className="absolute top-3 left-3 bg-true-orange text-white text-[10px] font-[1000] tracking-wider uppercase px-2.5 py-1 rounded-full shadow-sm">
                     {product.age_range} años
@@ -258,13 +271,17 @@ export function CatalogPageClient({ products }: CatalogPageClientProps) {
                   <div className="flex gap-2">
                     <Link
                       href={`/productos/${product.id}`}
+                      onClick={(e) => e.stopPropagation()}
                       className="flex-1 text-center bg-true-beige-light hover:bg-true-beige/35 text-true-navy text-xs font-bold py-2.5 rounded-xl border border-true-beige-border transition-colors"
                     >
                       Detalles
                     </Link>
                     <button
                       disabled={product.stock === 0}
-                      onClick={() => addItem(product)}
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        addItem(product)
+                      }}
                       className="flex-1 flex items-center justify-center gap-1.5 bg-true-orange hover:bg-true-orange-hover disabled:bg-true-light-gray disabled:cursor-not-allowed text-white text-xs font-bold py-2.5 rounded-xl transition-colors cursor-pointer"
                       aria-label={`Añadir ${product.name} al carrito`}
                     >
