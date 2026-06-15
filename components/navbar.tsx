@@ -1,12 +1,14 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { usePathname, useRouter } from "next/navigation"
-import { Menu, X, Search, User, ShoppingCart } from "lucide-react"
+import { Menu, X, Search, User, ShoppingCart, LogOut, UserCircle } from "lucide-react"
 import { useCart } from "@/context/cart-context"
+import { useAuth } from "@/context/auth-context"
 import { CartDrawer } from "@/components/cart-drawer"
+import { logout } from "@/app/auth/actions"
 
 const navLinks = [
   { label: "Inicio", href: "/#inicio" },
@@ -27,6 +29,136 @@ function scrollToSection(href: string) {
     element.getBoundingClientRect().top + window.scrollY - NAVBAR_OFFSET
 
   window.scrollTo({ top, behavior: "smooth" })
+}
+
+function getInitials(name: string | null | undefined, email: string | undefined) {
+  if (name) {
+    return name
+      .split(" ")
+      .slice(0, 2)
+      .map((n) => n[0])
+      .join("")
+      .toUpperCase()
+  }
+  return email ? email[0].toUpperCase() : "?"
+}
+
+/** Botón de usuario en desktop: ícono si no logueado, avatar con dropdown si logueado */
+function NavbarUserButton() {
+  const { user, isLoading } = useAuth()
+  const [open, setOpen] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
+
+  // Cerrar dropdown al hacer click fuera
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setOpen(false)
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => document.removeEventListener("mousedown", handleClickOutside)
+  }, [])
+
+  if (isLoading) {
+    return <div className="w-8 h-8 rounded-full bg-gray-200 animate-pulse" />
+  }
+
+  if (!user) {
+    return (
+      <Link
+        href="/login"
+        className="text-true-gray hover:text-true-orange transition-colors"
+        aria-label="Iniciar sesión"
+      >
+        <User className="w-5 h-5 md:w-6 md:h-6" />
+      </Link>
+    )
+  }
+
+  const fullName = user.user_metadata?.full_name as string | undefined
+  const initials = getInitials(fullName, user.email)
+
+  return (
+    <div ref={dropdownRef} className="relative">
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-8 h-8 rounded-full bg-true-orange text-white text-xs font-bold flex items-center justify-center hover:bg-orange-600 transition-colors shadow-sm"
+        aria-label="Menú de usuario"
+        aria-expanded={open}
+      >
+        {initials}
+      </button>
+
+      {open && (
+        <div className="absolute right-0 top-full mt-2 w-52 bg-white rounded-2xl shadow-lg border border-gray-100 py-2 z-50">
+          {/* User info */}
+          <div className="px-4 py-2 border-b border-gray-100 mb-1">
+            {fullName && (
+              <p className="text-sm font-semibold text-gray-900 truncate">{fullName}</p>
+            )}
+            <p className="text-xs text-gray-500 truncate">{user.email}</p>
+          </div>
+
+          <Link
+            href="/perfil"
+            onClick={() => setOpen(false)}
+            className="flex items-center gap-2.5 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+          >
+            <UserCircle className="w-4 h-4 text-true-orange" />
+            Mi perfil
+          </Link>
+
+          <form action={logout}>
+            <button
+              type="submit"
+              className="w-full flex items-center gap-2.5 px-4 py-2 text-sm text-red-500 hover:bg-red-50 transition-colors"
+            >
+              <LogOut className="w-4 h-4" />
+              Cerrar sesión
+            </button>
+          </form>
+        </div>
+      )}
+    </div>
+  )
+}
+
+/** Enlace de usuario en menú mobile */
+function MobileUserLink() {
+  const { user, isLoading } = useAuth()
+
+  if (isLoading) return null
+
+  if (!user) {
+    return (
+      <Link
+        href="/login"
+        className="text-true-gray hover:text-true-orange transition-colors font-sans text-sm tracking-[0.2em]"
+      >
+        Iniciar sesión
+      </Link>
+    )
+  }
+
+  return (
+    <div className="flex flex-col items-center gap-2">
+      <Link
+        href="/perfil"
+        className="text-true-gray hover:text-true-orange transition-colors font-sans text-sm tracking-[0.2em]"
+      >
+        Mi perfil
+      </Link>
+      <form action={logout}>
+        <button
+          type="submit"
+          className="text-red-400 hover:text-red-500 transition-colors font-sans text-sm tracking-[0.2em]"
+        >
+          Cerrar sesión
+        </button>
+      </form>
+    </div>
+  )
 }
 
 export function Navbar() {
@@ -55,7 +187,6 @@ export function Navbar() {
       e.preventDefault()
       scrollToSection(href)
     }
-    // Si no estamos en el home, el comportamiento por defecto de Link nos llevará al "/" con el hash correspondiente.
     setIsOpen(false)
   }
 
@@ -79,7 +210,6 @@ export function Navbar() {
       <div className={`w-full max-w-[1400px] mx-auto px-6 transition-all duration-300 flex items-center justify-between gap-4 ${
         isScrolled ? "py-2" : "py-3"
       }`}>
-        {/* Left: Logo */}
         <div className="flex-shrink-0 w-[120px] sm:w-[150px]">
           <Link
             href="/#inicio"
@@ -97,7 +227,6 @@ export function Navbar() {
           </Link>
         </div>
 
-        {/* Center: Desktop Navigation */}
         <nav className="hidden lg:flex flex-1 justify-center">
           <ul className="flex justify-center items-center gap-6 xl:gap-10">
             {navLinks.map((link) => (
@@ -114,9 +243,7 @@ export function Navbar() {
           </ul>
         </nav>
 
-        {/* Right: Search, Login & Mobile Toggle */}
         <div className="flex items-center gap-3 md:gap-4 justify-end flex-shrink-0 w-auto lg:w-[300px]">
-          {/* Search Input */}
           <form
             onSubmit={handleSearchSubmit}
             className="relative hidden md:flex items-center w-full max-w-[200px]"
@@ -138,7 +265,6 @@ export function Navbar() {
             </button>
           </form>
 
-          {/* Cart Button */}
           <button
             onClick={openCart}
             className="relative text-true-gray hover:text-true-orange transition-colors cursor-pointer"
@@ -152,11 +278,8 @@ export function Navbar() {
             )}
           </button>
 
-          <button className="text-true-gray hover:text-true-orange transition-colors" aria-label="Login">
-            <User className="w-5 h-5 md:w-6 md:h-6" />
-          </button>
+          <NavbarUserButton />
 
-          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="lg:hidden text-true-gray hover:text-true-orange p-1 ml-1"
@@ -167,10 +290,8 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Navigation */}
       {isOpen && (
         <div className="lg:hidden absolute top-full left-0 w-full bg-white shadow-md border-t border-gray-100">
-          {/* Mobile Search */}
           <form
             onSubmit={handleSearchSubmit}
             className="md:hidden px-6 py-4 border-b border-gray-100"
@@ -206,13 +327,15 @@ export function Navbar() {
                   </Link>
                 </li>
               ))}
+              <li className="pt-2 border-t border-gray-100 w-full text-center">
+                <MobileUserLink />
+              </li>
             </ul>
           </nav>
         </div>
       )}
     </header>
 
-    {/* El CartDrawer se renderiza fuera del <header> pero dentro del mismo componente */}
     <CartDrawer />
     </>
   )

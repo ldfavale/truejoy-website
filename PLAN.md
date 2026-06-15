@@ -22,8 +22,8 @@ Este plan detalla el desarrollo paso a paso del e-commerce para Truejoy utilizan
 
 ---
 
-### [ ] Fase 3: Autenticación de Usuarios
-* **Entregable**: Login y Registro de usuarios para poder realizar compras, barra de navegación adaptativa, página de perfil del usuario.
+### [x] Fase 3: Autenticación de Usuarios
+* **Entregable**: Login y Registro de usuarios (incluir iniciar session con google) para poder realizar compras, barra de navegación adaptativa, página de perfil del usuario.
 * **Conceptos clave a aprender**:
   * **Supabase Auth**: Autenticación por email/contraseña, manejo de sesiones (JWT) y cookies automáticas.
   * **Next.js**: Middleware (interceptar rutas para protegerlas, ej: `/perfil` solo para logueados), y Server Actions (funciones del servidor ejecutadas desde formularios cliente).
