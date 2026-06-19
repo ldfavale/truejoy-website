@@ -8,6 +8,7 @@ import { createClient } from "@/lib/supabase/server"
 import { Product } from "@/lib/types"
 import { MOCK_PRODUCTS } from "@/lib/mock-data"
 import { AddToCartButton } from "./add-to-cart-button"
+import { WhatsAppProductButton } from "./whatsapp-product-button"
 
 interface ProductPageProps {
   params: Promise<{
@@ -148,6 +149,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
               {/* Actions */}
               <div className="flex flex-col gap-3">
                 <AddToCartButton product={product} />
+                <WhatsAppProductButton product={product} />
               </div>
             </div>
           </div>
